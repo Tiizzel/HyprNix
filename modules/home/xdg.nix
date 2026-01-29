@@ -18,9 +18,9 @@ in {
       #   "application/x-pdf" = ["okular.desktop"];    # legacy alias
       #
       #   # Web browser
-      #   "x-scheme-handler/http"  = ["google-chrome.desktop"];  # or brave-browser.desktop, firefox.desktop, etc.
-      #   "x-scheme-handler/https" = ["google-chrome.desktop"];
-      #   "text/html"              = ["google-chrome.desktop"];
+      #   "x-scheme-handler/http"  = ["zen.desktop"];  # or brave-browser.desktop, firefox.desktop, etc.
+      #   "x-scheme-handler/https" = ["zen.desktop"];
+      #   "text/html"              = ["zen.desktop"];
       #
       #   # Text files
       #   "text/plain" = ["nvim.desktop"];             # or code.desktop, org.gnome.TextEditor.desktop
@@ -38,7 +38,22 @@ in {
     };
     portal = {
       enable = true;
-      extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+      ];
+      config = {
+        common = {
+          default = [ "gtk" ];
+          "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+        };
+        hyprland = {
+          default = [ "hyprland" "gtk" ];
+          "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+          "org.freedesktop.impl.portal.OpenURI" = [ "gtk" ];
+        };
+      };
       configPackages = [pkgs.hyprland];
     };
   };

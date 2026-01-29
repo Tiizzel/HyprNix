@@ -1,7 +1,11 @@
 {pkgs, ...}: {
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+    extraPortals = with pkgs; [
+      xdg-desktop-portal
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
     configPackages = [pkgs.hyprland];
   };
   services = {
@@ -20,6 +24,7 @@
         #"io.github.freedoom.Phase2"      #  Classic Doom FPS 2
         #"io.github.dvlv.boxbuddyrs"      #  Manage distroboxes
         #"de.schmidhuberj.tubefeeder"     #watch YT videos
+        #"com.hypixel.HytaleLauncher"     # Hytale Launcher
 
         # Add other Flatpak IDs here, e.g., "org.mozilla.firefox"
       ];

@@ -30,6 +30,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hytale-launcher = {
+      url = "github:JPyke3/hytale-launcher-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake/beta";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +50,7 @@
     home-manager,
     nixvim,
     nix-flatpak,
+    hytale-launcher,
     alejandra,
     ...
   } @ inputs: let
@@ -67,6 +73,7 @@
           ./modules/core/overlays.nix
           ./profiles/${gpuProfile}
           nix-flatpak.nixosModules.nix-flatpak
+          {environment.systemPackages = [hytale-launcher.packages.x86_64-linux.default];}
         ];
       };
   in {

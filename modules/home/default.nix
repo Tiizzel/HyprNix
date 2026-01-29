@@ -40,6 +40,7 @@ in {
       ./home-packages.nix
       ./cli/htop.nix
       ./hyprland
+      ./hytale.nix
       ./terminals/kitty.nix
       ./cli/lazygit.nix
       ./obs-studio.nix

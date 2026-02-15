@@ -79,6 +79,7 @@ in {
       enable = true;
     };
     settings = {
+      "$modifier" = "SUPER";
       input =
         {
           kb_layout = hyprKbLayout;

@@ -16,48 +16,21 @@ This includes the wallpaper, scripts, applications, config files, and more.
 
 <img align="center" width="80%" src="img/ZaneyOS-Floating.png" />
 
-
-
-
-### Noctalia Shell Integration
-
-<img align="center" width="80%" src="img/ZaneyOS-noctalia-panel.png" />
-
-<img align="center" width="80%" src="img/ZaneyOS-noctalia-app.png" />
-
-<img align="center" width="80%" src="img/ZaneyOS-noctalia-settings.png" />
-
-<img align="center" width="80%" src="img/ZaneyOS-noctalia-weather.png" />
-
-### Additional Features
-
-<img align="center" width="80%" src="img/ZaneyOS-keybind-search.png" />
-
-<img align="center" width="80%" src="img/ZaneyOS-nivim-emacs.png" />
-
-</details>
-
-<div align="center">
-
 ### Cheatsheets and Guides
 
-- Nix Beginner Guide: [English](cheatsheets/nix-beginner-guide.md) |
-  [Español](cheatsheets/nix-beginner-guide.es.md)
-- Hyprland Customization Guide:
-  [English](cheatsheets/hyprland-customization-guide.md) |
-  [Español](cheatsheets/hyprland-customization-guide.es.md)
+- Nix Beginner Guide: (cheatsheets/nix-beginner-guide.md)
+- Hyprland Customization Guide (cheatsheets/hyprland-customization-guide.md)
 
 #### 🍖 Requirements
 
-- You must be running on NixOS, version 24.05+.
-- The `zaneyos` folder (this repo) is expected to be in your home directory.
+- The `HyprNix` folder (this repo) is expected to be in your home directory.
 - You must have installed NIXOS using **GPT** parition with booting with
   **UEFI**.
 - ** 500MB minimum /boot partition required. **
 - Systemd-boot is what is supported.
 - For GRUB you will have to brave the internet for a how-to. ☺️
 - Manually editing your host specific files.
-- The host is the specific computer your installing on.
+- The host is the specific computer you're installing on.
 
 #### 🎹 Pipewire & Notification Menu Controls
 
@@ -78,30 +51,6 @@ This includes the wallpaper, scripts, applications, config files, and more.
   file.
 - Easy to understand file structure and simple, but encompassing, configuration.
 
-#### 👼 An Incredible Community Focused On Support
-
-- The entire idea of ZaneyOS is to make NixOS an approachable space.
-- NixOS is actually a great community that you will want to be a part of.
-- Many people who are patient and happy to spend their free time helping you are
-  running ZaneyOS.
-- Feel free to reach out on the Discord for any help with anything.
-
-#### 📦 How To Install Packages?
-
-- You can search the [Nix Packages](https://search.nixos.org/packages?) &
-  [Options](https://search.nixos.org/options?) pages for what a package may be
-  named or if it has options available that take care of configuration hurdles
-  you may face.
-- To add a package there are the sections for it in `modules/core/packages.nix`
-  and `modules/core/user.nix`. One is for programs available system wide and the
-  other for your users environment only.
-
-#### 🙋 Having Issues / Questions?
-
-- Please feel free to raise an issue on the repo, please label a feature request
-  with the title beginning with [feature request], thank you!
-- Contact us on [Discord](https://discord.gg/XhZmNTnhtp) as well, for a potentially
-  faster response.
 
 # Hyprland Keybindings
 
@@ -117,18 +66,17 @@ when `barChoice = "noctalia"`).
 
 ### Application Launching
 
-- `$modifier + Return` → Launch `terminal`
+- `$modifier + Space → Launch `terminal`
 - `$modifier + Tab` → Toggle `Quickshell Overview` (workspace overview with live previews)
 - `$modifier + K` → List keybinds
 - `$modifier + Shift + W` → Open `web-search`
 - `$modifier + Alt + W` → Open `wallsetter`
 - `$modifier + Shift + N` → Run `swaync-client -rs`
-- `$modifier + W` → Launch `Web Browser`
+- `$modifier + B` → Launch `Web Browser`
 - `$modifier + Y` → Open `kitty` with `yazi`
 - `$modifier + E` → Open `emopicker9000`
 - `$modifier + S` → Take a screenshot
 - `$modifier + Shift + D` → Open `Discord`
-- `$modifier + O` → Launch `OBS Studio`
 - `$modifier + Alt + C` → Color Picker
 - `$modifier + G` → Open `GIMP`
 - `$modifier + T` → Toggle terminal with `pypr`

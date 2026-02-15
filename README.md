@@ -1,12 +1,12 @@
-[English](README.md) | [Español](README.es.md)
+[English](README.md)
 
 <div align="center">
 
-## ZaneyOS 🟰 Best ❄️ NixOS Configs
+## HyprNix ❄️ NixOS Configs
 
 \*\* Updated: January 16th, 2026
 
-ZaneyOS is a simple way of reproducing my configuration on any NixOS system.
+HyprNix is a simple way of reproducing my configuration on any NixOS system.
 This includes the wallpaper, scripts, applications, config files, and more.
 
 ## Important Note on Noctalia
@@ -16,16 +16,8 @@ This includes the wallpaper, scripts, applications, config files, and more.
 
 <img align="center" width="80%" src="img/ZaneyOS-Floating.png" />
 
-</div>
 
-<details>
-<summary><strong>📸 More Screenshots</strong></summary>
 
-### Waybar Themes
-
-<img align="center" width="80%" src="img/demo-img2.png" />
-
-<img align="center" width="80%" src="img/demo-img3.png" />
 
 ### Noctalia Shell Integration
 

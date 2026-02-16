@@ -14,8 +14,6 @@ This includes the wallpaper, scripts, applications, config files, and more.
 > The first time you login, screen will be blank SUPER + SHIFT + C to exit.
 > Login in, noctalia will start from then on
 
-<img align="center" width="80%" src="img/ZaneyOS-Floating.png" />
-
 ### Cheatsheets and Guides
 
 - Nix Beginner Guide: (cheatsheets/nix-beginner-guide.md)

@@ -10,6 +10,7 @@ in {
     ./boot.nix
     ./flatpak.nix
     ./fonts.nix
+    ./gaming-support.nix
     ./hardware.nix
     ./network.nix
     ./nfs.nix

@@ -13,6 +13,7 @@
   tmuxEnable = false;
   alacrittyEnable = false;
   weztermEnable = false;
+  gamingSupportEnable = true; # Gaming controllers, gamescope, protonup-qt
   ghosttyEnable = false;
   vscodeEnable = false;
   antigravityEnable = false; # Google port of vscodium
@@ -45,7 +46,7 @@
   # This does NOT install your browser
   # You need to install it by adding it to the `packages.nix`
   # or as a flatpak
-  browser = "zen";
+  browser = "zen-beta";
   editor = "zeditor";
 
   # Host-level default applications (picked up by Home Manager xdg.mimeApps)

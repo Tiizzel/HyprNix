@@ -39,62 +39,98 @@
         "keybind" = "h";
       }
     ];
+      #${config.lib.stylix.colors.base0B}
+
     style = ''
+
       * {
-        font-family: "JetBrainsMono NF", FontAwesome, sans-serif;
-      	background-image: none;
-      	transition: 20ms;
+        font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+        background-image: none;
+        transition: 20ms;
+        box-shadow: none;
       }
+
       window {
-      	background-color: rgba(12, 12, 12, 0.1);
+      	background-color: rgba(12, 12, 12, 0.5);
+      	background-image: none;
       }
+
       button {
-      	color: #${config.lib.stylix.colors.base05};
-        font-size:20px;
         background-repeat: no-repeat;
-      	background-position: center;
-      	background-size: 25%;
-      	border-style: solid;
-      	background-color: rgba(12, 12, 12, 0.3);
-      	border: 3px solid #${config.lib.stylix.colors.base05};
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      }
-      button:focus,
-      button:active,
-      button:hover {
-        color: #${config.lib.stylix.colors.base0B};
+        background-position: center;
+        background-size: 20%;
+        animation: gradient_f 20s ease-in infinite;
+        border-radius: 80px; /* Increased border radius for a more rounded look */
+        border: 3px solid #${config.lib.stylix.colors.base05};
+        transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+        color: #${config.lib.stylix.colors.base05};
         background-color: rgba(12, 12, 12, 0.5);
-        border: 3px solid #${config.lib.stylix.colors.base0B};
+        margin: 10px;
+        min-width: 150px;
+        min-height: 150px;
       }
-      #logout {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/logout.png"));
+
+      button:focus {
+        background-color: #${config.lib.stylix.colors.base02};
+        background-size: 25%;
+        border: 3px solid #${config.lib.stylix.colors.base05};
       }
-      #suspend {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/suspend.png"));
+
+      button:hover {
+          background-color: #${config.lib.stylix.colors.base0B};
+          opacity: 0.8;
+          color: #${config.lib.stylix.colors.base0B};
+          background-size: 30%;
+          margin: 30px;
+          border-radius: 80px;
+          box-shadow: 0 0 50px @shadow;
       }
-      #shutdown {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/shutdown.png"));
+
+      /* Adjust the size of the icon or content inside the button */
+      button span {
+          font-size: 1.2em; /* Increase the font size */
       }
-      #reboot {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/reboot.png"));
-      }
+
+      /*
+      -----------------------------------------------------
+      Buttons
+      -----------------------------------------------------
+      */
+
       #lock {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/lock.png"));
+        margin: 10px;
+        border-radius: 20px;
+        background-image: image(url("icons/lock.png"));
       }
+
+      #logout {
+        margin: 10px;
+        border-radius: 20px;
+        background-image: image(url("icons/logout.png"));
+      }
+
+      #suspend {
+        margin: 10px;
+        border-radius: 20px;
+        background-image: image(url("icons/suspend.png"));
+      }
+
       #hibernate {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/hibernate.png"));
+        margin: 10px;
+        border-radius: 20px;
+        background-image: image(url("icons/hibernate.png"));
+      }
+
+      #shutdown {
+        margin: 10px;
+        border-radius: 20px;
+        background-image: image(url("icons/shutdown.png"));
+      }
+
+      #reboot {
+        margin: 10px;
+        border-radius: 20px;
+        background-image: image(url("icons/reboot.png"));
       }
     '';
   };

@@ -16,7 +16,7 @@
   # Select bar module based on barChoice
   barModule =
     if barChoice == "noctalia"
-    then ./noctalia.nix
+    then ./noctalia-shell/default.nix #./noctalia.nix
     else waybarChoice;
 in {
   imports =

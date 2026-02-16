@@ -1,5 +1,5 @@
 {
-  description = "ZaneyOS";
+  description = "HyprNix";
 
   inputs = {
     home-manager = {

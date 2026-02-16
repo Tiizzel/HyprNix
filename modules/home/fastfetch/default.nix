@@ -25,7 +25,7 @@
         "break"
         {
           type = "os";
-          key = "OS";
+          key = "OS - HyprNix";
           keyColor = "31";
         }
         {

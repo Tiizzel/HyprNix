@@ -50,8 +50,6 @@ in {
       cliphist # Clipboard manager using rofi menu
       cmatrix # Matrix Movie Effect In Terminal
       cowsay # Great Fun Terminal Program
-      #discord # Stable client
-      #discord-canary # beta  client
       docker-compose # Allows Controlling Docker From A Single File
       duf # Utility For Viewing Disk Usage In Terminal
       dysk # Disk space util nice formattting
@@ -97,6 +95,7 @@ in {
       v4l-utils # Used For Things Like OBS Virtual Camera
       waypaper # Change wallpaper
       wget # Tool For Fetching Files With Links
+      wgnord # wgnord
       ytmdl # Tool For Downloading Audio From YouTube
       python3 # Python 3 programming language
     ];

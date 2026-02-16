@@ -110,6 +110,15 @@ in {
         workspace_swipe_forever = true;
       };
 
+      workspace = [
+        "1, monitor:DP-1, zen-beta"
+        "2, monitor:DP-1, vesktop, spotify"
+        "3, monitor:DP-1"
+        "4, monitor:DP-1"
+        "5, monitor:DP-1"
+        "6, monitor:DP-1"
+      ];
+
       general = {
         "$modifier" = "SUPER";
         layout = "dwindle";

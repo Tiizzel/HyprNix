@@ -11,6 +11,7 @@
   neroHyprlandVer = "0.0.2"; # amarcos1337.nero-hyprland
   codeRunnerVer = "0.12.4"; # formulahendry.code-runner
 
+
   # Helper: prefer Open VSX (pkgs.vscode-extensions). If missing and a version is
   # provided, fetch from the VSCode Marketplace using extensionsFromVscodeMarketplace.
   extOrMarketplace = {

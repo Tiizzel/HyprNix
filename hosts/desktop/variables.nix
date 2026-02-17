@@ -97,7 +97,7 @@
   # This will set your color palette
   # Default background
   # Add new images to ~/zaneyos/wallpapers
-  stylixImage = ../../wallpapers/aishot-2152.jpg;
+  stylixImage = ../../wallpapers/aishot-821.jpg;
 
   # Set Waybar
   #  Available Options:

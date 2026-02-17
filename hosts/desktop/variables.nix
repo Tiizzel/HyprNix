@@ -3,7 +3,7 @@
   gitUsername = "Tiizzel";
   gitEmail = "tiizztwitch@gmail.com";
 
-  # Set Displau Manager
+  # Set Display Manager
   # `tui` for Text login
   # `sddm` for graphical GUI (default)
   # SDDM background is set with stylixImage
@@ -97,7 +97,7 @@
   # This will set your color palette
   # Default background
   # Add new images to ~/zaneyos/wallpapers
-  stylixImage = ../../wallpapers/aishot-3256.jpg;
+  stylixImage = ../../wallpapers/aishot-2152.jpg;
 
   # Set Waybar
   #  Available Options:

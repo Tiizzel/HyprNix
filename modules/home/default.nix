@@ -24,29 +24,31 @@ in {
       ./amfora.nix
       ./bash.nix
       ./bashrc-personal.nix
-      ./overview.nix
-      ./python.nix
+      ./cli/atuin.nix
       ./cli/bat.nix
       ./cli/btop.nix
       ./cli/bottom.nix
       ./cli/cava.nix
-      ./emoji.nix
-      ./eza.nix
-      ./fastfetch
       ./cli/fzf.nix
       ./cli/gh.nix
       ./cli/git.nix
-      ./gtk.nix
-      ./home-packages.nix
       ./cli/htop.nix
-      ./hyprland
-      ./hytale.nix
-      ./terminals/kitty.nix
       ./cli/lazygit.nix
-      ./obs-studio.nix
+      ./cli/pay-respects.nix
       #./editors/nvf.nix
       ./editors/nixvim.nix
       ./editors/nano.nix
+      ./emoji.nix
+      ./eza.nix
+      ./fastfetch
+      ./gtk.nix
+      ./home-packages.nix
+      ./hyprland
+      ./hytale.nix
+      ./terminals/kitty.nix
+      ./obs-studio.nix
+      ./overview.nix
+      ./python.nix
       ./rofi
       ./qt.nix
       ./scripts

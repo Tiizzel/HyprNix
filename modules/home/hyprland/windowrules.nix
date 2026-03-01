@@ -11,8 +11,8 @@ in {
         # downside it can impact other xwayland apps
         # This rule is a template for a more targeted approach
         #
-        "workspace 2, class:^(spotify)$"
-        "workspace 2, class:^(vesktop)$"
+        "workspace 2, class:(spotify)"
+        "workspace 2, class:(vesktop)"
 
         "noblur, class:^(\bresolve\b)$, xwayland:1" # Window rule for just resolve
         "tag +file-manager, class:^([Tt]hunar|org.gnome.Nautilus|[Pp]cmanfm-qt)$"

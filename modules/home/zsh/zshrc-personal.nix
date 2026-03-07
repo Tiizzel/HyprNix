@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [zsh];
 
-  home.file."./.zshrc-personal".text = ''
+  home.file."./.config/zsh/.zshrc-personal".text = ''
 
     # This file allows you to define your own aliases, functions, etc
     # below are just some examples of what you can use this file for

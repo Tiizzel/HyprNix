@@ -1,5 +1,6 @@
 {
   profile,
+  config,
   pkgs,
   lib,
   ...
@@ -10,6 +11,7 @@
 
   programs.zsh = {
     enable = true;
+    dotDir = "${config.xdg.configHome}/zsh";
     autosuggestion.enable = true;
     syntaxHighlighting = {
       enable = true;
@@ -45,8 +47,8 @@
       bindkey "\ej" down-line-or-history
       bindkey "\ek" up-line-or-history
       bindkey "\el" forward-word
-      if [ -f $HOME/.zshrc-personal ]; then
-        source $HOME/.zshrc-personal
+      if [ -f $HOME/.config/zsh/.zshrc-personal ]; then
+        source $HOME/.config/zsh/.zshrc-personal
       fi
 
       # Launch fastfetch on first terminal spawn

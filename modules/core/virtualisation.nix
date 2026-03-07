@@ -21,6 +21,7 @@
     virt-manager.enable = false;
   };
 
+  systemd.services."virt-secret-init-encryption".enable = false;
   environment.systemPackages = with pkgs; [
     virt-viewer # View Virtual Machines
     lazydocker

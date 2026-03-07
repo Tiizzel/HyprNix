@@ -29,7 +29,7 @@
         # Add other Flatpak IDs here, e.g., "org.mozilla.firefox"
       ];
 
-      # Optional: Automatically update Flatpaks when you run nixos-rebuild swit ch
+      # Optional: Automatically update Flatpaks when you run nixos-rebuild switch
       update.onActivation = true;
     };
   };

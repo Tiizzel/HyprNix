@@ -3,125 +3,95 @@
     enable = true;
 
     settings = {
-      display = {
-        color = {
-          keys = "35";
-          output = "95";
-        };
-        separator = " ➜  ";
-      };
-
+      #"$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
         type = "kitty-direct";
         height = 10;
         width = 20;
         padding = {
-          top = 2;
-          left = 2;
+          top = 1;
+          right = 4;
+          left = 3;
         };
       };
-
+      display = {
+        separator = " ";
+      };
       modules = [
-        "break"
         {
-          type = "os";
-          key = "OS - HyprNix";
-          keyColor = "31";
+          key = "╭───────────╮";
+          type = "custom";
         }
         {
-          type = "kernel";
-          key = " ├  ";
-          keyColor = "31";
+          key = "│ {#31} user    {#keys}│";
+          type = "title";
+          format = "{user-name}";
         }
         {
-          type = "packages";
-          key = " ├ 󰏖 ";
-          keyColor = "31";
+          key = "│ {#32}󰇅 hname   {#keys}│";
+          type = "title";
+          format = "{host-name}";
         }
         {
-          type = "shell";
-          key = " └  ";
-          keyColor = "31";
-        }
-        "break"
-        {
-          type = "wm";
-          key = "WM   ";
-          keyColor = "32";
+          type = "command";
+          key = "│ {#33}󱦟 os age  {#keys}│";
+          keyColor = "magenta";
+          text = "printf \"\\e[0m%s days\\e[0m\" \"$(( ($(date +%s) - $(stat -c %W /)) / 86400 ))\"";
         }
         {
-          type = "wmtheme";
-          key = " ├ 󰉼 ";
-          keyColor = "32";
-        }
-        {
-          type = "icons";
-          key = " ├ 󰀻 ";
-          keyColor = "32";
-        }
-        {
-          type = "cursor";
-          key = " ├  ";
-          keyColor = "32";
-        }
-        {
-          type = "terminal";
-          key = " ├  ";
-          keyColor = "32";
-        }
-        {
-          type = "terminalfont";
-          key = " └  ";
-          keyColor = "32";
-        }
-        "break"
-        {
-          type = "host";
-          format = "{5} {1} Type {2}";
-          key = "PC   ";
-          keyColor = "33";
-        }
-        {
-          type = "cpu";
-          format = "{1} ({3}) @ {7}";
-          key = " ├  ";
-          keyColor = "33";
-        }
-        {
-          type = "gpu";
-          format = "{1} {2} @ {12} GHz";
-          key = " ├ 󰢮 ";
-          keyColor = "33";
-        }
-        {
-          type = "memory";
-          key = " ├  ";
-          keyColor = "33";
-        }
-        {
-          type = "disk";
-          key = " ├ 󰋊 ";
-          keyColor = "33";
-        }
-        {
-          type = "monitor";
-          key = " ├  ";
-          keyColor = "33";
-        }
-        {
-          type = "player";
-          key = " ├ 󰥠 ";
-          keyColor = "33";
-        }
-        {
-          type = "media";
-          key = " └ 󰝚 ";
-          keyColor = "33";
-        }
-        "break"
-        {
+          key = "│ {#34}󰅐 uptime  {#keys}│";
           type = "uptime";
-          key = "   Uptime   ";
+        }
+        {
+          key = "│ {#34}{icon} distro  {#keys}│";
+          type = "os";
+        }
+        {
+          key = "│ {#35} kernel  {#keys}│";
+          type = "kernel";
+        }
+        {
+          key = "│ {#36} wm      {#keys}│";
+          type = "wm";
+        }
+        {
+          key = "│ {#36}󰇄 desktop {#keys}│";
+          type = "de";
+        }
+        {
+          key = "│ {#31} term    {#keys}│";
+          type = "terminal";
+        }
+        {
+          key = "│ {#32} shell   {#keys}│";
+          type = "shell";
+        }
+        {
+          key = "│ {#33}󰍛 cpu     {#keys}│";
+          type = "cpu";
+          showPeCoreCount = true;
+        }
+        {
+          key = "│ {#34}󰉉 disk    {#keys}│";
+          type = "disk";
+          folders = "/";
+        }
+        {
+          key = "│ {#36} memory  {#keys}│";
+          type = "memory";
+        }
+        {
+          key = "├───────────┤";
+          type = "custom";
+        }
+        {
+          key = "│ {#39} colors  {#keys}│";
+          type = "colors";
+          symbol = "circle";
+        }
+        {
+          key = "╰───────────╯";
+          type = "custom";
         }
       ];
     };

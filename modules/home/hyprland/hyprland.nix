@@ -223,6 +223,8 @@ in {
       # To enable blur on waybar uncomment the line below
       # Thanks to SchotjeChrisman
       #layerrule = blur,waybar
+      #layerrule = blur, wlogout
+      #layerrule = ignorezero, wlogout
     ";
   };
 }

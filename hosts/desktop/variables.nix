@@ -1,162 +1,113 @@
 {
-  # Git Configuration ( For Pulling Software Repos )
-  gitUsername = "Tiizzel";
-  gitEmail = "tiizztwitch@gmail.com";
+  # ────────────────────────────────────────────────────────────────────────────
+  # 👤 SYSTEM & USER CONFIGURATION
+  # ────────────────────────────────────────────────────────────────────────────
 
-  # Set Display Manager
-  # `tui` for Text login
-  # `sddm` for graphical GUI (default)
-  # SDDM background is set with stylixImage
+  # Git Configuration
+  gitUsername = "Tiizzel";
+  gitEmail    = "tiizztwitch@gmail.com";
+
+  # Localization
+  keyboardLayout  = "de";
+  keyboardVariant = "";
+  consoleKeyMap   = "de";
+  timezone        = "Europe/Berlin"; # Added default
+  hostId          = "5ab03f50";      # Required for ZFS
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 🚀 BOOTLOADER & HARDWARE
+  # ────────────────────────────────────────────────────────────────────────────
+
+  # Bootloader Settings
+  # Options: "systemd-boot", "grub"
+  bootloader     = "grub";
+  grubResolution = "5120x1440";
+  grubTheme      = "distro"; # Options: "sleek", "minimal", "stylix", "distro"
+
+  # Hardware Support
+  gamingSupportEnable = true;  # Controllers, gamescope, protonup-qt
+  enableNFS           = true;  # Network File System
+  printEnable         = false; # Printing support
+
+  # GPU IDs (For hybrid support: Intel/NVIDIA Prime or AMD/NVIDIA)
+  intelID  = "PCI:1:0:0";
+  amdgpuID = "PCI:5:0:0";
+  nvidiaID = "PCI:0:2:0";
+
+  # ────────────────────────────────────────────────────────────────────────────
+  # 🖥️ DISPLAY & WINDOW MANAGER
+  # ────────────────────────────────────────────────────────────────────────────
+
+  # Display Manager
+  # Options: "sddm" (GUI), "tui" (Text)
   displayManager = "sddm";
 
-  # Emable/disable bundled applications
-  tmuxEnable = false;
-  alacrittyEnable = false;
-  weztermEnable = false;
-  gamingSupportEnable = true; # Gaming controllers, gamescope, protonup-qt
-  ghosttyEnable = false;
-  vscodeEnable = false;
-  antigravityEnable = false; # Google port of vscodium
-  # Note: This is evil-helix with VIM keybindings by default
-  helixEnable = false;
-  #To install: Enable here, zcli rebuild, then run zcli doom install
-  doomEmacsEnable = false;
+  # Hyprland Layout
+  # Options: "dwindle" (standard), "scrolling" (master-stack), "master"
+  hyprlandLayout = "scrolling";
 
-  # Python development tools are included by default
-
-  # Hyprland Settings
-  # Examples:
-  # extraMonitorSettings = "monitor = Virtual-1,1920x1080@60,auto,1";
-  # extraMonitorSettings = "monitor = HDMI-A-1,1920x1080@60,auto,1";
-  # You can configure multiple monitors.
-  # Inside the quotes, create a new line for each monitor.
+  # Monitor Settings
   extraMonitorSettings = "
     monitor = DP-1,5120x1440@240,auto,1, bitdepth, 10, cm, hdr, sdrbrightness, 1.33, sdrsaturation, 1.18
   ";
 
-  # ── Hyprland Layout ────────────────────────────────────────────────────────
-  # Wähle das Standard-Layout für Hyprland:
-  #   "dwindle"   → klassisches rekursives Tiling (HyprNix Standard)
-  #   "scrolling" → horizontales Scrolling-Layout (neu ab Hyprland 0.54)
-  #   "master"    → Master-Stack Layout
-  hyprlandLayout = "scrolling";
+  # ────────────────────────────────────────────────────────────────────────────
+  # 🛠️ UI COMPONENTS & SHELL
+  # ────────────────────────────────────────────────────────────────────────────
 
-
-  # ── Bar/Shell Settings ──────────────────────────────────────────────────────
-  # Wähle die Standard-Bar für Hyprland:
-  #   "noctalia" → Noctalia Bar (default)
-  #   "waybar"   → Waybar (requires waybar package)
+  # Status Bar
+  # Options: "noctalia" (default), "waybar"
   barChoice = "noctalia";
-
-  # Choose your bootloader:
-  #   "systemd-boot" (default)
-  #   "grub"
-  bootloader = "grub";
-  grubResolution = "5120x1440";
-  # Available options: "sleek", "minimal", "stylix", "distro"
-  grubTheme = "stylix";
 
   # Waybar Settings (used when barChoice = "waybar")
   clock24h = true;
 
-  # Program Options
-  # Set Default Browser (google-chrome-stable for google-chrome)
-  # This does NOT install your browser
-  # You need to install it by adding it to the `packages.nix`
-  # or as a flatpak
-  browser = "zen-beta";
-  editor = "zeditor";
+  # Terminal & Editor
+  terminal = "kitty";  # Options: Kitty, ghostty, wezterm, alacritty
+  editor   = "zeditor";
+  browser  = "zen-beta";
 
-  # Host-level default applications (picked up by Home Manager xdg.mimeApps)
-  # Uncomment and adjust the .desktop IDs to set per-host defaults.
+  # ────────────────────────────────────────────────────────────────────────────
+  # 📦 FEATURE TOGGLES (ENABLE/DISABLE)
+  # ────────────────────────────────────────────────────────────────────────────
+
+  # Application Enablers
+  thunarEnable    = true;  # GUI File Manager (Yazi is default CLI)
+  tmuxEnable      = false;
+  alacrittyEnable = false;
+  weztermEnable   = false;
+  ghosttyEnable   = false;
+  vscodeEnable    = false;
+  antigravityEnable = false; # Google fork of VSCodium
+  helixEnable     = false; # Evil-helix with VIM binds
+  doomEmacsEnable = false; # Requires: zcli doom install
+
+  # MIME Defaults (XDG)
   mimeDefaultApps = {
-    # PDFs
-    "application/pdf" = ["okular.desktop"];
-    "application/x-pdf" = ["okular.desktop"];
-    # Web browser
-    "x-scheme-handler/http"  = ["firefox.desktop"];  # or brave-browser.desktop, firefox.desktop
-    "x-scheme-handler/https" = ["firefox.desktop"];
-    "text/html"              = ["firefox.desktop"];
-    # Files
-    "inode/directory" = ["thunar.desktop"];      # file manager
-    "text/plain"      = ["nvim.desktop"];        # or code.desktop
+    "application/pdf"         = ["okular.desktop"];
+    "application/x-pdf"       = ["okular.desktop"];
+    "x-scheme-handler/http"   = ["firefox.desktop"];
+    "x-scheme-handler/https"  = ["firefox.desktop"];
+    "text/html"               = ["firefox.desktop"];
+    "inode/directory"         = ["thunar.desktop"];
+    "text/plain"              = ["nvim.desktop"];
   };
 
-  # Available Options:
-  # Kitty, ghostty, wezterm, aalacrity
-  # Note: kitty, wezterm, alacritty have to be enabled in `variables.nix`
-  # Setting it here does not enable it. Kitty is installed by default
-  terminal = "kitty"; # Set Default System Terminal
+  # ────────────────────────────────────────────────────────────────────────────
+  # 🎨 THEMING & AESTHETICS
+  # ────────────────────────────────────────────────────────────────────────────
 
-  keyboardLayout = "de";
-  keyboardVariant = "";
-  consoleKeyMap = "de";
-
-  # For hybrid support (Intel/NVIDIA Prime or AMD/NVIDIA)
-  intelID = "PCI:1:0:0";
-  amdgpuID = "PCI:5:0:0";
-  nvidiaID = "PCI:0:2:0";
-
-  # Enable NFS
-  enableNFS = true;
-
-  # Enable Printing Support
-  printEnable = false;
-
-  # Enable Thunar GUI File Manager
-  # Yazi is default File Manager
-  thunarEnable = true;
-
-  # Themes, waybar and animation.
-  #  Only uncomment your selection
-  # The others much be commented out.
-
-  # Set Stylix Image
-  # This will set your color palette
-  # Default background
-  # Add new images to ~/HyprNix/wallpapers
+  # Wallpaper & Color Palette
   stylixImage = ../../wallpapers/aishot-821.jpg;
 
-  # Set Waybar
-  #  Available Options:
+  # Waybar Presets (Uncomment one)
   waybarChoice = ../../modules/home/waybar/waybar-curved.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-ddubs.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-ddubs-2.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-simple.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-dwm.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-dwm-2.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-nekodyke.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-jerry.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-TheBlackDon.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-tony.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-ddubsos-v1.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-mecha.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-jak-catppuccin.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-jak-ml4w-modern.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-jak-oglo-simple.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-jwt-catppuccin.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-jwt-transparent.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-jwt-ultradark.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-pctrade-catppuccin.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-mangowc-jak-catppuccin.nix;
-  #waybarChoice = ../../modules/home/waybar/waybar-old-ddubsos.nix;
+  # waybarChoice = ../../modules/home/waybar/waybar-ddubs.nix;
+  # waybarChoice = ../../modules/home/waybar/waybar-mecha.nix;
+  # waybarChoice = ../../modules/home/waybar/waybar-old-ddubsos.nix;
 
-  # Set Animation style
-  # Available options are:
-  #animChoice = ../../modules/home/hyprland/animations-def.nix;
-  #animChoice = ../../modules/home/hyprland/animations-end4.nix;
-  #animChoice = ../../modules/home/hyprland/animations-end4-slide.nix;
-  #animChoice = ../../modules/home/hyprland/animations-end-slide.nix;
+  # Hyprland Animation Style (Uncomment one)
   animChoice = ../../modules/home/hyprland/animations-dynamic.nix;
-  #animChoice = ../../modules/home/hyprland/animations-moving.nix;
-  #animChoice = ../../modules/home/hyprland/animations-hyde-optimized.nix;
-  #animChoice = ../../modules/home/hyprland/animations-mahaveer-me-1.nix;
-  #animChoice = ../../modules/home/hyprland/animations-mahaveer-me-2.nix;
-  #animChoice = ../../modules/home/hyprland/animations-ml4w-classic.nix;
-  #animChoice = ../../modules/home/hyprland/animations-ml4w-fast.nix;
-  #animChoice = ../../modules/home/hyprland/animations-ml4w-high.nix;
-
-  # Set network hostId if required (needed for zfs)
-  # Otherwise leave as-is
-  hostId = "5ab03f50";
+  # animChoice = ../../modules/home/hyprland/animations-ml4w-classic.nix;
+  # animChoice = ../../modules/home/hyprland/animations-end4.nix;
 }

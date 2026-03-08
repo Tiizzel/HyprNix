@@ -41,6 +41,8 @@
       url = "github:kamadorueda/alejandra";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
   };
 
   outputs = {
@@ -50,6 +52,7 @@
     nix-flatpak,
     #hytale-launcher,
     alejandra,
+    chaotic,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -71,6 +74,7 @@
           ./modules/core/overlays.nix
           ./profiles/${gpuProfile}
           nix-flatpak.nixosModules.nix-flatpak
+          chaotic.nixosModules.default
           #{environment.systemPackages = [hytale-launcher.packages.x86_64-linux.default];}
         ];
       };

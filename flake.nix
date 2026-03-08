@@ -7,7 +7,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nvf.url = "github:notashelf/nvf";
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix = {
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,7 +26,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Google Antigravity (IDE)
     antigravity-nix = {
@@ -34,7 +44,7 @@
 
     zen-browser = {
         url = "github:0xc000022070/zen-browser-flake";
-        inputs.nixpkgs.follows = "nixpkgs";
+        # Removed follows to avoid icu77 build-mozilla-mach error
     };
 
     alejandra = {
@@ -49,6 +59,7 @@
     nixpkgs,
     home-manager,
     nixvim,
+    nvf,
     nix-flatpak,
     #hytale-launcher,
     alejandra,

@@ -1,4 +1,5 @@
 {lib, ...}: {
+  chaotic.nyx.cache.enable = true;
   nix.settings = {
     substituters = lib.mkAfter [
       "https://cache.nixos.org"

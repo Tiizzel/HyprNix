@@ -8,7 +8,7 @@
   vars = import ../../hosts/${host}/variables.nix;
 in {
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
+    kernelPackages = pkgs.linuxPackages_cachyos;
     kernelModules = ["v4l2loopback"];
     extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
     kernel.sysctl = {"vm.max_map_count" = 2147483642;};
@@ -23,7 +23,7 @@ in {
         else false;
       devices = ["nodev"];
       efiSupport = true;
-      useOSProber = true;
+      useOSProber = false;
       gfxmodeEfi = vars.grubResolution;
       gfxmodeBios = vars.grubResolution;
       theme = lib.mkIf (vars.grubTheme != "stylix") (

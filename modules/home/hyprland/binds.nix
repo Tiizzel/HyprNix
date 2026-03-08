@@ -1,5 +1,6 @@
-{host, ...}: let
+{host,lib, ...}: let
   vars = import ../../../hosts/${host}/variables.nix;
+  layout               = vars.hyprlandLayout       or "dwindle";
   inherit
     (vars)
     barChoice
@@ -7,6 +8,11 @@
     terminal
     editor
     ;
+
+
+  # Ist Scrolling-Layout aktiv?
+  isScrolling = layout == "scrolling";
+
   # Noctalia-specific bindings (only included when barChoice == "noctalia")
   noctaliaBind =
     if barChoice == "noctalia"
@@ -140,8 +146,6 @@ in {
         # ============= WORKSPACE NAVIGATION =============
         "$modifier CONTROL,right, Next Workspace, workspace, e+1"
         "$modifier CONTROL,left, Previous Workspace, workspace, e-1"
-        "$modifier, mouse_down, Next Workspace Mouse, workspace, e+1"
-        "$modifier, mouse_up, Previous Workspace Mouse, workspace, e-1"
         # ============= WINDOW CYCLING =============
         "ALT,Tab, Cycle Next Window, cyclenext"
         "ALT,Tab, Bring Active To Top, bringactivetotop"
@@ -157,9 +161,65 @@ in {
         ",XF86MonBrightnessUp, Brightness Up, exec, brightnessctl set +5%"
       ];
 
+
     bindm = [
       "$modifier, mouse:272, movewindow"
       "$modifier, mouse:273, resizewindow"
     ];
+
+
+    bind =
+      # ── Navigations-Binds: Layout-abhängig ────────────────────────────
+      # Scrolling: horizontal mit H/L zwischen Spalten, vertikal J/K
+      # Dwindle:   standard movefocus in alle Richtungen
+       [
+        # Fokus-Navigation
+        "$modifier, H,            layoutmsg, move -col"
+        "$modifier, L,            layoutmsg, move +col"
+        "$modifier, Left,         layoutmsg, move -col"
+        "$modifier, Right,        layoutmsg, move +col"
+        "$modifier, K,            movefocus, u"
+        "$modifier, J,            movefocus, d"
+        "$modifier, Up,           movefocus, u"
+        "$modifier, Down,         movefocus, d"
+
+        # Spalten tauschen
+        "$modifier SHIFT, H,      layoutmsg, swapcol l"
+        "$modifier SHIFT, L,      layoutmsg, swapcol r"
+        "$modifier SHIFT, Left,   layoutmsg, swapcol l"
+        "$modifier SHIFT, Right,  layoutmsg, swapcol r"
+        "$modifier SHIFT, K,      movewindow, u"
+        "$modifier SHIFT, J,      movewindow, d"
+        "$modifier SHIFT, Up,     movewindow, u"
+        "$modifier SHIFT, Down,   movewindow, d"
+
+        # Fenster aus Spalte heraus → neue Spalte
+        "$modifier SHIFT, period, layoutmsg, movewindowto r"
+        "$modifier SHIFT, comma,  layoutmsg, movewindowto l"
+
+        # Spaltenbreite cyclen (explicit_column_widths aus variables.nix)
+        "$modifier, R,            layoutmsg, colresize +conf"
+        "$modifier SHIFT, R,      layoutmsg, colresize -conf"
+
+        # Spalte zentrieren / alle verteilen
+        "$modifier, C,            layoutmsg, alignwindow c"
+        "$modifier SHIFT, F,      layoutmsg, fitsize all"
+
+        # Workspace: ganze Spalte verschieben (erhält Spaltenstruktur)
+        "$modifier CTRL, 1,       layoutmsg, movecolumn 1"
+        "$modifier CTRL, 2,       layoutmsg, movecolumn 2"
+        "$modifier CTRL, 3,       layoutmsg, movecolumn 3"
+        "$modifier CTRL, 4,       layoutmsg, movecolumn 4"
+        "$modifier CTRL, 5,       layoutmsg, movecolumn 5"
+
+        # Mausrad-Navigation
+        "$modifier, mouse_down, layoutmsg, move -col"
+        "$modifier, mouse_up,   layoutmsg, move +col"
+        "$modifier SHIFT, mouse_down, layoutmsg, swapcol r"
+        "$modifier SHIFT, mouse_up,   layoutmsg, swapcol l"
+        "$modifier CTRL, mouse_down, layoutmsg, colresize +conf"
+        "$modifier CTRL, mouse_up, layoutmsg, colresize -conf"
+      ];
+
   };
 }

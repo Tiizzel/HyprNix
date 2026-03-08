@@ -12,13 +12,13 @@
     };
 
     virtualbox.host = {
-      enable = false;
+      enable = true;
       enableExtensionPack = true;
     };
   };
 
   programs = {
-    virt-manager.enable = false;
+    virt-manager.enable = true;
   };
 
   systemd.services."virt-secret-init-encryption".enable = false;

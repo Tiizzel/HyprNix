@@ -7,9 +7,13 @@
 }: let
   vars = import ../../../hosts/${host}/variables.nix;
   extraMonitorSettings = vars.extraMonitorSettings or "";
-  keyboardLayout = vars.keyboardLayout or "us";
-  keyboardVariant = vars.keyboardVariant or "";
-  stylixImage = vars.stylixImage or null;
+  layout               = vars.hyprlandLayout       or "dwindle";
+  keyboardLayout       = vars.keyboardLayout       or "us";
+  keyboardVariant      = vars.keyboardVariant      or "";
+  stylixImage          = vars.stylixImage          or null;
+
+  # Ist Scrolling-Layout aktiv?
+  isScrolling = layout == "scrolling";
 
   # Treat only known US-based variants as implying layout = "us".
   usVariants = ["dvorak" "colemak" "workman" "intl" "us-intl" "altgr-intl"];
@@ -121,7 +125,7 @@ in {
 
       general = {
         "$modifier" = "SUPER";
-        layout = "dwindle";
+        layout = layout; # "dwindle" oder "scrolling" aus variables.nix
         gaps_in = 6;
         gaps_out = 8;
         border_size = 2;
@@ -151,7 +155,23 @@ in {
       dwindle = {
         pseudotile = true;
         preserve_split = true;
+        smart_resizing = true;
         force_split = 2;
+      };
+
+      scrolling = {
+        column_width              = 0.25;
+        fullscreen_on_one_column  = true;
+        focus_fit_method          = 1;
+        follow_focus              = true;
+        follow_min_visible        = 0.4;
+        explicit_column_widths    = "0.25, 0.33, 0.5, 0.667";
+      };
+
+      master = {
+        new_status = "master";
+        new_on_top = 1;
+        mfact = 0.5;
       };
 
       decoration = {
@@ -191,11 +211,6 @@ in {
         direct_scanout = 0;
       };
 
-      master = {
-        new_status = "master";
-        new_on_top = 1;
-        mfact = 0.5;
-      };
 
       # Ensure Xwayland windows render at integer scale; compositor scales them
       xwayland = {

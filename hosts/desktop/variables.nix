@@ -32,10 +32,20 @@
   # Inside the quotes, create a new line for each monitor.
   extraMonitorSettings = "
     monitor = DP-1,5120x1440@240,auto,1, bitdepth, 10, cm, hdr, sdrbrightness, 1.33, sdrsaturation, 1.18
-    ";
+  ";
 
-  # Bar/Shell Settings
-  # Choose between noctalia or waybar
+  # ── Hyprland Layout ────────────────────────────────────────────────────────
+  # Wähle das Standard-Layout für Hyprland:
+  #   "dwindle"   → klassisches rekursives Tiling (HyprNix Standard)
+  #   "scrolling" → horizontales Scrolling-Layout (neu ab Hyprland 0.54)
+  #   "master"    → Master-Stack Layout
+  hyprlandLayout = "scrolling";
+
+
+  # ── Bar/Shell Settings ──────────────────────────────────────────────────────
+  # Wähle die Standard-Bar für Hyprland:
+  #   "noctalia" → Noctalia Bar (default)
+  #   "waybar"   → Waybar (requires waybar package)
   barChoice = "noctalia";
 
   # Waybar Settings (used when barChoice = "waybar")
@@ -96,7 +106,7 @@
   # Set Stylix Image
   # This will set your color palette
   # Default background
-  # Add new images to ~/zaneyos/wallpapers
+  # Add new images to ~/HyprNix/wallpapers
   stylixImage = ../../wallpapers/aishot-821.jpg;
 
   # Set Waybar

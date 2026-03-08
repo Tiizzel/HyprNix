@@ -1,8 +1,10 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     bitwarden-desktop # Bitwarden Desktop App
-    nodejs # Node.js
+    claude-code # Claude Code
+    gemini-cli-bin # Gemini CLI
     heroic # Heroic Games Launcher
+    nodejs # Node.js
     qbittorrent # qBittorrent
     scanmem # Cheat Engine
     taterclient-ddnet # TaterClient DDNet

@@ -48,6 +48,14 @@
   #   "waybar"   → Waybar (requires waybar package)
   barChoice = "noctalia";
 
+  # Choose your bootloader:
+  #   "systemd-boot" (default)
+  #   "grub"
+  bootloader = "grub";
+  grubResolution = "5120x1440";
+  # Available options: "sleek", "minimal", "stylix", "distro"
+  grubTheme = "stylix";
+
   # Waybar Settings (used when barChoice = "waybar")
   clock24h = true;
 

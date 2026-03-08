@@ -3,12 +3,14 @@
   host,
   ...
 }: let
-  inherit (import ../../hosts/${host}/variables.nix) stylixImage;
+  inherit (import ../../hosts/${host}/variables.nix) stylixImage grubTheme bootloader;
+  lib = pkgs.lib;
 in {
   # Styling Options
   stylix = {
     enable = true;
     image = stylixImage;
+    targets.grub.enable = lib.mkForce (grubTheme == "stylix" && bootloader == "grub");
     # base16Scheme = {
     #   base00 = "282936";
     #   base01 = "3a3c4e";

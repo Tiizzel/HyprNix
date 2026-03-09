@@ -11,6 +11,10 @@ _: {
       enable = true;
       profileNames = [ "default" ];
     };
+    zen-browser = {
+      enable = true;
+      profileNames = [ "desktop" ];
+    };
     qt = {
       enable = true;
       platform = "qtct";

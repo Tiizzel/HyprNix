@@ -10,16 +10,16 @@ in {
     enable = true;
     layout = [
       {
+        label = "shutdown";
+        action = "sleep 1; systemctl poweroff";
+        text = "Shutdown";
+        keybind = "s";
+      }
+      {
         label = "lock";
         action = "sleep 1; hyprlock";
         text = "Lock";
         keybind = "l";
-      }
-      {
-        label = "hibernate";
-        action = "sleep 1; systemctl hibernate";
-        text = "Hibernate";
-        keybind = "h";
       }
       {
         label = "logout";
@@ -28,22 +28,22 @@ in {
         keybind = "e";
       }
       {
-        label = "shutdown";
-        action = "sleep 1; systemctl poweroff";
-        text = "Shutdown";
-        keybind = "s";
+        label = "reboot";
+        action = "sleep 1; systemctl reboot";
+        text = "Reboot";
+        keybind = "r";
+      }
+      {
+        label = "hibernate";
+        action = "sleep 1; systemctl hibernate";
+        text = "Hibernate";
+        keybind = "h";
       }
       {
         label = "suspend";
         action = "sleep 1; systemctl suspend";
         text = "Suspend";
         keybind = "u";
-      }
-      {
-        label = "reboot";
-        action = "sleep 1; systemctl reboot";
-        text = "Reboot";
-        keybind = "r";
       }
     ];
 
@@ -84,8 +84,8 @@ in {
         color: #${config.lib.stylix.colors.base0B};
       }
 
-      #lock {
-        background-image: image(url("icons/lock.png"));
+      #shutdown {
+        background-image: image(url("icons/shutdown.png"));
       }
 
       #logout {
@@ -93,19 +93,18 @@ in {
       }
 
       #suspend {
-        background-image: image(url("icons/suspend.png"));
       }
 
-      #hibernate {
-        background-image: image(url("icons/hibernate.png"));
-      }
-
-      #shutdown {
-        background-image: image(url("icons/shutdown.png"));
+      #lock {
+        background-image: image(url("icons/lock.png"));
       }
 
       #reboot {
         background-image: image(url("icons/reboot.png"));
+      }
+
+      #hibernate {
+        background-image: image(url("icons/hibernate.png"));
       }
     '';
   };

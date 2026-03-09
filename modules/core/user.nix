@@ -15,7 +15,10 @@ in {
     backupFileExtension = "backup";
     extraSpecialArgs = {inherit inputs username host profile pkgs;};
     users.${username} = {
-      imports = [./../home];
+      imports = [
+        ./../home
+        inputs.zen-browser.homeModules.default
+      ];
       home = {
         username = "${username}";
         homeDirectory = "/home/${username}";

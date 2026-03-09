@@ -1,262 +1,115 @@
-[English](README.md)
+# ❄️ HyprNix
 
 <div align="center">
+  <img src="https://raw.githubusercontent.com/NixOS/nixos-artwork/master/logo/nixos-white.png" width="120" alt="NixOS Logo" />
+  <h3>Modular & Feature-Rich Hyprland Configuration</h3>
+  <p><i>A customized, high-performance NixOS flake for the modern desktop.</i></p>
 
-## HyprNix ❄️ NixOS Configs
+  [![NixOS Unstable](https://img.shields.io/badge/NixOS-Unstable-blue.svg?style=flat-square&logo=nixos)](https://nixos.org)
+  [![Hyprland](https://img.shields.io/badge/WM-Hyprland-brightgreen.svg?style=flat-square)](https://hyprland.org)
+  [![Stylix](https://img.shields.io/badge/Theme-Stylix-ff69b4.svg?style=flat-square)](https://github.com/nix-community/stylix)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](LICENSE)
+</div>
 
-\*\* Updated: January 16th, 2026
+---
 
-HyprNix is a simple way of reproducing my configuration on any NixOS system.
-This includes the wallpaper, scripts, applications, config files, and more.
+## 🚀 Overview
 
-## Important Note on Noctalia
+HyprNix is a modular NixOS configuration flake designed for power users who want a beautiful, functional, and automated Hyprland environment. Originally based on ZaneyOS, it has evolved into a highly customized system featuring system-wide theming, advanced shell features, and a dedicated management utility.
 
-> The first time you login, screen will be blank SUPER + SHIFT + C to exit.
-> Login in, noctalia will start from then on
+### ✨ Highlights
+- **🎨 System-wide Theming:** Powered by [Stylix](https://github.com/nix-community/stylix). Change one wallpaper, and your entire system (Terminal, Browsers, WM, Editors) follows suit.
+- **🛠️ Custom CLI Tool:** `zcli` simplifies system maintenance, rebuilds, and configuration management.
+- **🖥️ Desktop Flexibility:** Choose between the advanced **Noctalia Shell** or a highly customized **Waybar**.
+- **🌐 Browser Integration:** Pre-configured Firefox and Zen Browser with Stylix-driven aesthetics.
+- **⚡ Performance First:** Optimized for AMD, NVIDIA, and Intel GPUs with specialized profiles.
 
-### Cheatsheets and Guides
+---
 
-- Nix Beginner Guide: (cheatsheets/nix-beginner-guide.md)
-- Hyprland Customization Guide (cheatsheets/hyprland-customization-guide.md)
+## 📂 Project Structure
 
-#### 🍖 Requirements
-
-- The `HyprNix` folder (this repo) is expected to be in your home directory.
-- You must have installed NIXOS using **GPT** parition with booting with
-  **UEFI**.
-- ** 500MB minimum /boot partition required. **
-- Systemd-boot is what is supported.
-- For GRUB you will have to brave the internet for a how-to. ☺️
-- Manually editing your host specific files.
-- The host is the specific computer you're installing on.
-
-#### 🎹 Pipewire & Notification Menu Controls
-
-- We are using the latest and greatest audio solution for Linux. Not to mention
-  you will have media and volume controls in the notification center available
-  in the top bar.
-
-#### 🏇 Optimized Workflow & Simple Yet Elegant Neovim
-
-- Using Hyprland for increased elegance, functionality, and efficiency.
-- No massive NeoVIM project here, using `nixvim` for an
-  incredible NeoVIM setup. With language support already added in.
-
-#### 🖥️ Multi Host & User Configuration
-
-- You can define separate settings for different host machines and users.
-- Easily specify extra packages for your users in the `modules/core/user.nix`
-  file.
-- Easy to understand file structure and simple, but encompassing, configuration.
-
-
-# Hyprland Keybindings
-
-Below are the keybindings for Hyprland, formatted for easy reference. The right
-column shows keybindings that are specific to **Noctalia Shell** (only available
-when `barChoice = "noctalia"`).
-
-<table>
-<tr>
-<td width="50%">
-
-## Standard Keybindings
-
-### Application Launching
-
-- `$modifier + Space → Launch `terminal`
-- `$modifier + Tab` → Toggle `Quickshell Overview` (workspace overview with live previews)
-- `$modifier + K` → List keybinds
-- `$modifier + Shift + W` → Open `web-search`
-- `$modifier + Alt + W` → Open `wallsetter`
-- `$modifier + Shift + N` → Run `swaync-client -rs`
-- `$modifier + B` → Launch `Web Browser`
-- `$modifier + Y` → Open `kitty` with `yazi`
-- `$modifier + E` → Open `emopicker9000`
-- `$modifier + S` → Take a screenshot
-- `$modifier + Shift + D` → Open `Discord`
-- `$modifier + Alt + C` → Color Picker
-- `$modifier + G` → Open `GIMP`
-- `$modifier + T` → Toggle terminal with `pypr`
-- `$modifier + Alt + M` → Open `pavucontrol`
-
-### Window Management
-
-- `$modifier + Q` → Kill active window
-- `$modifier + P` → Toggle pseudo tiling
-- `$modifier + Shift + I` → Toggle split mode
-- `$modifier + F` → Toggle fullscreen
-- `$modifier + Shift + F` → Toggle floating mode
-- `$modifier + Alt + F` → Float all windows
-- `$modifier + Shift + C` → Exit Hyprland
-
-### Window Movement
-
-- `$modifier + Shift + ← / → / ↑ / ↓` → Move left/right/up/down
-- `$modifier + Shift + H / L / K / J` → Move left/right/up/down
-- `$modifier + Alt + ← / → / ↑ / ↓` → Swap left/right/up/down
-
-### Focus Movement
-
-- `$modifier + ← / → / ↑ / ↓` → Move focus left/right/up/down
-- `$modifier + H / L / K / J` → Move focus left/right/up/down
-
-### Workspaces
-
-- `$modifier + 1-10` → Switch to workspace 1-10
-- `$modifier + Shift + Space` → Move window to special workspace
-- `$modifier + Space` → Toggle special workspace
-- `$modifier + Shift + 1-10` → Move window to workspace 1-10
-- `$modifier + Control + → / ←` → Switch workspace forward/backward
-
-### Window Cycling
-
-- `Alt + Tab` → Cycle to next window / Bring active to top
-
-</td>
-<td width="50%">
-
-## 🎨 Noctalia Shell Keybindings
-
-_Available when `barChoice = "noctalia"` in `variables.nix`_
-
-- `$modifier + D` → Launcher Toggle
-- `$modifier + Shift + Return` → Launcher Toggle
-- `$modifier + M` → Notifications Menu
-- `$modifier + V` → Clipboard Manager
-- `$modifier + Alt + P` → Settings Panel
-- `$modifier + Shift + ,` → Settings Panel
-- `$modifier + Alt + L` → Lock Screen
-- `$modifier + Shift + Y` → Wallpaper Manager
-- `$modifier + X` → Power Menu
-- `$modifier + C` → Control Center
-- `$modifier + Ctrl + R` → Screen Recorder
-
-### Rofi Launcher (Waybar Mode)
-
-_Available when `barChoice = "waybar"` in `variables.nix`_
-
-- `$modifier + D` → Launch Rofi Launcher
-- `$modifier + Shift + Return` → Launch Rofi Launcher
-
-### Other Features
-
-- `$modifier + Shift + Return` (Waybar) → Application Launcher
-- `$modifier + V` (Waybar) → Clipboard History via `cliphist`
-
-</td>
-</tr>
-</table>
-
-## Installation:
-
-> **⚠️ IMPORTANT:** These installation methods are for **NEW INSTALLATIONS
-> ONLY**. If you already have ZaneyOS installed and want to upgrade to v2.4, see
-> the [Upgrade Instructions](#upgrading-from-zaneyos-23-to-24) below. Note:
-> There is an issue with upgrade script. It's been removed until it's fixed.
-
-<details>
-<summary><strong> ⬇️ Install with script (NEW INSTALLATIONS ONLY)</strong></summary>
-
-### 📜 Script:
-
-This is the easiest and recommended way of starting out for **new
-installations**. The script is not meant to allow you to change every option
-that you can in the flake or help you install extra packages. It is simply here
-so you can get my configuration installed with as little chances of breakages
-and then fiddle to your hearts content!
-
-> **⚠️ WARNING:** This script will completely replace any existing ~/zaneyos
-> directory. Do NOT use this if you already have ZaneyOS installed and
-> configured.
-
-Simply copy this and run it:
-
-![ZaneyOS First Install Command](img/first-install-cmd.jpg)
-
-```
-nix-shell -p git curl pciutils
+```bash
+├── hosts/             # Host-specific configurations (Variables & Hardware)
+├── modules/
+│   ├── core/          # System-level modules (Boot, Network, Security)
+│   ├── drivers/       # GPU and Hardware-specific drivers
+│   └── home/          # Home Manager modules (UI, Apps, Scripts)
+├── profiles/          # Entry points for different GPU/System types
+└── wallpapers/        # Collection of Stylix-ready wallpapers
 ```
 
-Then:
+---
 
-![ZaneyOS Install Script Command](img/install-script.jpg)
+## 🛠️ Management with `zcli`
 
-```
-sh <(curl -L https://gitlab.com/Zaney/zaneyos/-/raw/main/install-zaneyos.sh)
-```
+The `zcli` utility is your primary way to interact with HyprNix.
 
-#### The install process will look something like this:
+| Command | Description |
+| :--- | :--- |
+| `zcli rebuild` | Rebuild and switch to the current configuration. |
+| `zcli update` | Update the flake lockfile and rebuild the system. |
+| `zcli cleanup` | Interactive tool to remove old generations and free space. |
+| `zcli add-host [name]` | Create a new host configuration from a template. |
+| `zcli diag` | Generate a system diagnostic report. |
 
-![First Part Of Install](img/1.jpg)
+---
 
-![Second Part Of Install](img/2.jpg)
+## ⌨️ Hyprland Keybindings
 
-#### After the install completes your environment will probably look broken. Just reboot and you will see this as your login:
+| Keybind | Action |
+| :--- | :--- |
+| `SUPER + Space` | Open Terminal (`kitty` by default) |
+| `SUPER + D` | Application Launcher |
+| `SUPER + Q` | Kill Active Window |
+| `SUPER + F` | Toggle Fullscreen |
+| `SUPER + Shift + F` | Toggle Floating Mode |
+| `SUPER + Tab` | Toggle Quickshell Overview |
+| `SUPER + B` | Open Web Browser |
+| `SUPER + S` | Take Screenshot |
+| `SUPER + V` | Clipboard Manager |
+| `SUPER + X` | Power Menu (`wlogout`) |
+| `SUPER + 1-9` | Switch Workspace |
+| `SUPER + Shift + 1-9` | Move Window to Workspace |
 
-![Display Manager](img/3.jpg)
+---
 
-#### Then after login you should see a screen like this:
+## 🔧 Installation & Setup
 
-![Desktop Example](img/4.jpg)
-
-</details>
-
-<details>
-<summary><strong> 🦽 Manual install process:  </strong></summary>
-
-1. Run this command to ensure Git & Vim are installed:
-
-```
-nix-shell -p git vim
-```
-
-2. Clone this repo & enter it:
-
-```
-cd && git clone https://gitlab.com/zaney/zaneyos.git -b main --depth=1 ~/zaneyos
-cd zaneyos
-
-You can still run the `install.sh` script if you want to.
-```
-
-- _You should stay in this folder for the rest of the install_
-
-3. Create the host folder for your machine(s) like so:
-
-```
-cp -r hosts/default hosts/<your-desired-hostname>
-git add .
+### 1. Bootstrap
+Ensure you have the necessary tools installed on your initial NixOS installation:
+```bash
+nix-shell -p git pciutils
 ```
 
-4. Edit `hosts/<your-desired-hostname>/variab
-   nixos-generate-config --show-hardware-config > hosts/<your-desired-hostname>/hardware.nix
-
+### 2. Clone the Repository
+```bash
+git clone https://github.com/tiizzel/HyprNix.git ~/HyprNix
+cd ~/HyprNix
 ```
 
-7. Run this to enable flakes and install the flake replacing hostname with
-   profile. I.e. `intel`, `nvidia`, `nvidia-laptop`, `amd-hybrid`, or `vm`
-
+### 3. Configure Your Host
+Create your host folder and edit `variables.nix`:
+```bash
+cp -r hosts/default hosts/my-machine
+# Edit hosts/my-machine/variables.nix to set your GPU, name, etc.
 ```
 
-NIX_CONFIG="experimental-features = nix-command flakes"
-sudo nixos-rebuild switch --flake .#profile
-
+### 4. Build
+```bash
+# Set your profile and host in flake.nix or use zcli
+sudo nixos-rebuild switch --flake .#amd  # Replace 'amd' with your profile
 ```
 
-Now when you want to rebuild the configuration you have access to an alias
-called `fr` that will rebuild the flake and you do not have to be in the
-`zaneyos` folder for it to work.
+---
 
-</details>
+## 🤝 Credits & Acknowledgements
 
-### Special Recognitions:
+- **ZaneyOS:** The original foundation of this project.
+- **Noctalia Devs:** For the incredible Noctalia Shell.
+- **Nix Community:** For Stylix, Home Manager, and the NixOS ecosystem.
 
-Thank you for all your assistance
+---
 
-- Jakookit https://github.com/jakookit
-- Justaguylinux https://github.com/drewgrif
-- Jerry Starke https://github.com/JerrySM64
-
-## Hope you enjoy!
-```
+<div align="center">
+  <p>Developed with ❤️ by Tiizzel</p>
+</div>

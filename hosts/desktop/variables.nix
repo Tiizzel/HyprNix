@@ -57,7 +57,7 @@
 
   # Status Bar
   # Options: "noctalia" (default), "waybar"
-  barChoice = "noctalia";
+  barChoice = "waybar";
 
   # Waybar Settings (used when barChoice = "waybar")
   clock24h = true;
@@ -101,7 +101,8 @@
   stylixImage = ../../wallpapers/aishot-821.jpg;
 
   # Waybar Presets (Uncomment one)
-  waybarChoice = ../../modules/home/waybar/waybar-curved.nix;
+  waybarChoice = ../../modules/home/waybar/waybar-ml4w.nix;
+  # waybarChoice = ../../modules/home/waybar/waybar-curved.nix;
   # waybarChoice = ../../modules/home/waybar/waybar-ddubs.nix;
   # waybarChoice = ../../modules/home/waybar/waybar-mecha.nix;
   # waybarChoice = ../../modules/home/waybar/waybar-old-ddubsos.nix;

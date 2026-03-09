@@ -19,6 +19,7 @@ in {
         "tag +terminal, class:^(com.mitchellh.ghostty|org.wezfurlong.wezterm|Alacritty|kitty|kitty-dropterm)$"
         "tag +browser, class:^(Brave-browser(-beta|-dev|-unstable)?)$"
         "tag +browser, class:^([Ff]irefox|org.mozilla.firefox|[Ff]irefox-esr)$"
+        "tag +browser, class:^(zen-beta|zen-browser|zen|org.mozilla.zen)$"
         "tag +browser, class:^([Gg]oogle-chrome(-beta|-dev|-unstable)?)$"
         "tag +browser, class:^([Tt]horium-browser|[Cc]achy-browser)$"
         "tag +projects, class:^(codium|codium-url-handler|VSCodium)$"

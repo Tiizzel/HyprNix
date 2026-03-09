@@ -3,9 +3,10 @@
   host,
   ...
 }: let
-  inherit (import ../../hosts/${host}/variables.nix) stylixImage grubTheme bootloader opacity;
+  vars = import ../../hosts/${host}/variables.nix;
+  inherit (vars) stylixImage grubTheme bootloader;
   lib = pkgs.lib;
-  opacityVal = opacity or 1.0;
+  opacityVal = vars.opacity or 1.0;
 in {
   # Styling Options
   stylix = {

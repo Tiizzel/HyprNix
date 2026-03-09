@@ -41,6 +41,7 @@ in {
       ./emoji.nix
       ./eza.nix
       ./fastfetch
+      ./firefox.nix
       ./gtk.nix
       ./home-packages.nix
       ./hyprland

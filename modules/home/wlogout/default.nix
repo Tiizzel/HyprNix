@@ -1,4 +1,11 @@
-{config, ...}: {
+{ config, pkgs, ... }:
+let
+  blurredImage = pkgs.runCommand "blurred-wallpaper.png" {
+    nativeBuildInputs = [ pkgs.imagemagick ];
+  } ''
+    convert ${config.stylix.image} -blur 0x25 $out
+  '';
+in {
   programs.wlogout = {
     enable = true;
     layout = [
@@ -47,15 +54,17 @@
       }
 
       window {
-        background-color: rgba(12, 12, 12, 0.1);
+        background-image: url("${blurredImage}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
       }
 
       button {
         color: #${config.lib.stylix.colors.base05};
         background-color: rgba(30, 30, 46, 0.5);
         outline-style: none;
-        border: none;
-        border-width: 0px;
+        border: 2px solid rgba(255, 255, 255, 0.1);
         background-repeat: no-repeat;
         background-position: center;
         background-size: 25%;
@@ -70,6 +79,7 @@
       button:active,
       button:hover {
         background-color: rgba(137, 180, 250, 0.5);
+        border: 2px solid #${config.lib.stylix.colors.base0D};
         background-size: 30%;
         color: #${config.lib.stylix.colors.base0B};
       }

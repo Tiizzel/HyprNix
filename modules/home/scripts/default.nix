@@ -38,7 +38,7 @@
     (import ./docs-parser.nix {inherit pkgs;})
     (import ./launch-nwg-menu.nix {inherit pkgs;})
     (import ./hyprland-dock.nix {inherit pkgs;})
-    (import ./zcli.nix {
+    (import ./tcli.nix {
       inherit pkgs profile;
       backupFiles = [
         ".config/mimeapps.list.backup"

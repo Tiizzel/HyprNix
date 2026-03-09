@@ -7,6 +7,10 @@ _: {
     hyprland.enable = false;
     hyprlock.enable = false;
     ghostty.enable = false;
+    firefox = {
+      enable = true;
+      profileNames = [ "default" ];
+    };
     qt = {
       enable = true;
       platform = "qtct";

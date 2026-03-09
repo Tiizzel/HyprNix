@@ -78,16 +78,16 @@
     print_success "All done! Doom Emacs is ready to use."
   '';
 in
-  pkgs.writeShellScriptBin "zcli" ''
+  pkgs.writeShellScriptBin "tcli" ''
     #!${pkgs.bash}/bin/bash
     set -euo pipefail
 
     # --- Program info ---
     #
-    # zcli - NixOS System Management CLI
+    # tcli - NixOS System Management CLI
     # ==================================
     #
-    #    Purpose: NixOS system management utility for ZaneyOS distribution
+    #    Purpose: NixOS system management utility for HyprNix distribution
     #     Author: Don Williams (ddubs) & Zaney
     # Start Date: June 7th, 2025
     #    Version: 1.0.2
@@ -121,7 +121,7 @@ in
     # doom [sub]          - Doom Emacs management (install/status/remove/update)
     #
     # Variables:
-    # PROJECT             - Base directory name (ddubsos/zaneyos)
+    # PROJECT             - Base directory name (ddubsos/HyprNix)
     # PROFILE             - Hardware profile from Nix parameter
     # BACKUP_FILES        - Array of backup file paths to clean
     # FLAKE_NIX_PATH      - Path to flake.nix for host/profile updates
@@ -129,7 +129,7 @@ in
 
 
     # --- Configuration ---
-    PROJECT="zaneyos"   #ddubos or zaneyos
+    PROJECT="HyprNix"   #ddubos or HyprNix
     PROFILE="${profile}"
     BACKUP_FILES_STR="${backupFilesString}"
     VERSION="1.0.2"
@@ -158,7 +158,7 @@ in
           echo "  Current hostname: '$current_hostname'" >&2
           echo "  Flake.nix host:   '$flake_hostname'" >&2
           echo "" >&2
-          echo "Hint: Run 'zcli update-host' to automatically update flake.nix" >&2
+          echo "Hint: Run 'tcli update-host' to automatically update flake.nix" >&2
           echo "      or manually edit $FLAKE_NIX_PATH" >&2
           exit 1
         fi
@@ -176,9 +176,9 @@ in
     }
 
     print_help() {
-      echo "ZaneyOS CLI Utility -- version $VERSION"
+      echo "HyprNix CLI Utility -- version $VERSION"
       echo ""
-      echo "Usage: zcli [command] [options]"
+      echo "Usage: tcli [command] [options]"
       echo ""
       echo "Commands:"
       echo "  cleanup         - Clean up old system generations. Can specify a number to keep."
@@ -190,7 +190,7 @@ in
       echo "  trim            - Trim filesystems to improve SSD performance."
       echo "  update          - Update the flake and rebuild the system."
       echo "  update-host     - Auto set host and profile in flake.nix."
-      echo "                    (Opt: zcli update-host [hostname] [profile])"
+      echo "                    (Opt: tcli update-host [hostname] [profile])"
       echo ""
       echo "Options for rebuild, rebuild-boot, and update commands:"
       echo "  --dry, -n       - Show what would be done without doing it"
@@ -365,9 +365,9 @@ in
           fi
         fi
 
-        LOG_DIR="$HOME/zcli-cleanup-logs"
+        LOG_DIR="$HOME/tcli-cleanup-logs"
         mkdir -p "$LOG_DIR"
-        LOG_FILE="$LOG_DIR/zcli-cleanup-$(${pkgs.coreutils}/bin/date +%Y-%m-%d_%H-%M-%S).log"
+        LOG_FILE="$LOG_DIR/tcli-cleanup-$(${pkgs.coreutils}/bin/date +%Y-%m-%d_%H-%M-%S).log"
         echo "Cleaning up old log files..." >> "$LOG_FILE"
         ${pkgs.findutils}/bin/find "$LOG_DIR" -type f -mtime +3 -name "*.log" -delete >> "$LOG_FILE" 2>&1
         echo "Cleanup process logged to $LOG_FILE"
@@ -450,24 +450,24 @@ in
         target_hostname=""
         target_profile=""
 
-        if [ "$#" -eq 3 ]; then # zcli update-host <hostname> <profile>
+        if [ "$#" -eq 3 ]; then # tcli update-host <hostname> <profile>
           target_hostname="$2"
           target_profile="$3"
-        elif [ "$#" -eq 1 ]; then # zcli update-host (auto-detect)
+        elif [ "$#" -eq 1 ]; then # tcli update-host (auto-detect)
           echo "Attempting to auto-detect hostname and GPU profile..."
           target_hostname=$(${pkgs.nettools}/bin/hostname)
           target_profile=$(detect_gpu_profile)
 
           if [ -z "$target_profile" ]; then
             echo "Error: Could not auto-detect a specific GPU profile. Please provide it manually." >&2
-            echo "Usage: zcli update-host [hostname] [profile]" >&2
+            echo "Usage: tcli update-host [hostname] [profile]" >&2
             exit 1
           fi
           echo "Auto-detected Hostname: $target_hostname"
           echo "Auto-detected Profile: $target_profile"
         else
           echo "Error: Invalid number of arguments for 'update-host'." >&2
-          echo "Usage: zcli update-host [hostname] [profile]" >&2
+          echo "Usage: tcli update-host [hostname] [profile]" >&2
           exit 1
         fi
 
@@ -575,7 +575,7 @@ in
       doom)
         if [ "$#" -lt 2 ]; then
           echo "Error: doom command requires a subcommand." >&2
-          echo "Usage: zcli doom [install|status|remove|update]" >&2
+          echo "Usage: tcli doom [install|status|remove|update]" >&2
           exit 1
         fi
 
@@ -601,7 +601,7 @@ in
             ${pkgs.gnused}/bin/sed -i 's/^[[:space:]]*doomEmacsEnable[[:space:]]*=.*/  doomEmacsEnable = true;/' "$host_vars_file"
           else
             echo "" >> "$host_vars_file"
-            echo "  # Enabled by zcli doom on $(date)" >> "$host_vars_file"
+            echo "  # Enabled by tcli doom on $(date)" >> "$host_vars_file"
             echo "  doomEmacsEnable = true;" >> "$host_vars_file"
           fi
         }
@@ -624,7 +624,7 @@ in
                 if ${pkgs.nh}/bin/nh os switch --diff always --hostname "$PROFILE"; then
                   echo "Rebuild complete. Proceeding with Doom installation."
                 else
-                  echo "Error: Rebuild failed. Please fix the build and re-run 'zcli doom install'." >&2
+                  echo "Error: Rebuild failed. Please fix the build and re-run 'tcli doom install'." >&2
                   exit 1
                 fi
               else
@@ -655,7 +655,7 @@ in
               else
                 echo "✗ Doom Emacs is not installed"
               fi
-              echo "Run 'zcli doom install' to install it"
+              echo "Run 'tcli doom install' to install it"
             fi
             ;;
           remove)
@@ -677,7 +677,7 @@ in
             ;;
           update)
             if [ ! -x "$HOME/.emacs.d/bin/doom" ] || [ ! -f "$HOME/.emacs.d/core/doom.el" ]; then
-              echo "Error: Doom Emacs is not installed correctly. Run 'zcli doom install' first." >&2
+              echo "Error: Doom Emacs is not installed correctly. Run 'tcli doom install' first." >&2
               exit 1
             fi
 
@@ -687,7 +687,7 @@ in
             ;;
           *)
             echo "Error: Invalid doom subcommand '$doom_subcommand'" >&2
-            echo "Usage: zcli doom [install|status|remove|update]" >&2
+            echo "Usage: tcli doom [install|status|remove|update]" >&2
             exit 1
             ;;
         esac

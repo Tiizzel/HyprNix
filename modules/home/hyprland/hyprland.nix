@@ -11,6 +11,8 @@
   keyboardLayout       = vars.keyboardLayout       or "us";
   keyboardVariant      = vars.keyboardVariant      or "";
   stylixImage          = vars.stylixImage          or null;
+  opacity              = vars.opacity              or 1.0;
+  inactiveOpacity      = vars.inactiveOpacity      or 1.0;
 
   # Ist Scrolling-Layout aktiv?
   isScrolling = layout == "scrolling";
@@ -160,7 +162,7 @@ in {
       };
 
       scrolling = {
-        column_width              = 0.25;
+        column_width              = 0.333;
         fullscreen_on_one_column  = true;
         focus_fit_method          = 1;
         follow_focus              = true;
@@ -176,8 +178,8 @@ in {
 
       decoration = {
         rounding = 10;
-        active_opacity = 0.95;
-        inactive_opacity = 0.90;
+        active_opacity = opacity;
+        inactive_opacity = inactiveOpacity;
         blur = {
           enabled = true;
           size = 5;

@@ -99,6 +99,10 @@
   #  Only uncomment your selection
   # The others much be commented out.
 
+  # Transparency (0.0 to 1.0)
+  opacity = 1.0;
+  inactiveOpacity = 1.0;
+
   # Set Stylix Image
   # This will set your color palette
   # Default background

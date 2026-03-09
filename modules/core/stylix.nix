@@ -3,8 +3,9 @@
   host,
   ...
 }: let
-  inherit (import ../../hosts/${host}/variables.nix) stylixImage grubTheme bootloader;
+  inherit (import ../../hosts/${host}/variables.nix) stylixImage grubTheme bootloader opacity;
   lib = pkgs.lib;
+  opacityVal = opacity or 1.0;
 in {
   # Styling Options
   stylix = {
@@ -31,10 +32,10 @@ in {
     # };
     polarity = "dark";
     opacity = {
-      applications = 0.95;
-      terminal = 0.90;
-      desktop = 0.95;
-      popups = 0.95;
+      applications = opacityVal;
+      terminal = opacityVal;
+      desktop = opacityVal;
+      popups = opacityVal;
     };
     cursor = {
       package = pkgs.bibata-cursors;

@@ -97,6 +97,10 @@
   # 🎨 THEMING & AESTHETICS
   # ────────────────────────────────────────────────────────────────────────────
 
+  # Transparency (0.0 to 1.0)
+  opacity         = 0.95;
+  inactiveOpacity = 0.90;
+
   # Wallpaper & Color Palette
   stylixImage = ../../wallpapers/aishot-821.jpg;
 

@@ -40,6 +40,7 @@ in {
         "modules-left" = [
           "custom/menu"
           "hyprland/workspaces"
+          "mpris"
           "hyprland/window"
         ];
 
@@ -56,6 +57,20 @@ in {
           "tray"
           "custom/power"
         ];
+
+        "mpris" = {
+          "format" = "{player_icon} {title} - {artist}";
+          "format-paused" = "{status_icon} <i>{title} - {artist}</i>";
+          "player-icons" = {
+            "default" = "▶";
+            "mpv" = "🎵";
+            "spotify" = "";
+          };
+          "status-icons" = {
+            "paused" = "⏸";
+          };
+          "max-length" = 30;
+        };
 
         "hyprland/workspaces" = {
           "on-click" = "activate";
@@ -198,7 +213,7 @@ in {
         border-radius: 10px;
       }
 
-      #clock, #cpu, #memory, #pulseaudio, #network, #battery, #tray, #custom-menu, #custom-power {
+      #clock, #cpu, #memory, #pulseaudio, #network, #battery, #tray, #custom-menu, #custom-power, #mpris {
         padding: 0 10px;
       }
 

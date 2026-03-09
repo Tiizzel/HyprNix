@@ -98,14 +98,14 @@
   # ────────────────────────────────────────────────────────────────────────────
 
   # Transparency (0.0 to 1.0)
-  opacity         = 0.90;
-  inactiveOpacity = 0.80;
+  opacity         = 1.0;
+  inactiveOpacity = 0.85;
 
   # Wallpaper & Color Palette
   stylixImage = ../../wallpapers/aishot-821.jpg;
 
   # Waybar Presets (Uncomment one)
-  waybarChoice = ../../modules/home/waybar/waybar-ml4w.nix;
+  waybarChoice = ../../modules/home/waybar/waybar-hyprnix.nix;
   # waybarChoice = ../../modules/home/waybar/waybar-curved.nix;
   # waybarChoice = ../../modules/home/waybar/waybar-ddubs.nix;
   # waybarChoice = ../../modules/home/waybar/waybar-mecha.nix;

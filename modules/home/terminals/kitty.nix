@@ -110,7 +110,7 @@
     # Background image managed by wrapper via symlink
     background_image  ${config.home.homeDirectory}/Pictures/current_image_kitty
     background_image_layout scaled
-    background_tint 0.85
+    background_tint 0.65
     background_opacity 0.50
     linux_display_server auto
   '';

@@ -14,6 +14,7 @@ in {
     ./hardware.nix
     ./network.nix
     ./nfs.nix
+    ./matugen.nix
     ./nh.nix
     ./quickshell.nix
     ./packages.nix

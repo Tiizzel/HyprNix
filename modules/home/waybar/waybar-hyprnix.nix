@@ -17,9 +17,9 @@ with lib; let
     low = builtins.substring 1 1 hex;
   in
     (digits."${high}" * 16) + digits."${low}";
-  
+
   # Format as rgba decimal string
-  toRGBA = hex: alpha: 
+  toRGBA = hex: alpha:
     "rgba(${toString (hexToDec (builtins.substring 0 2 hex))}, ${toString (hexToDec (builtins.substring 2 2 hex))}, ${toString (hexToDec (builtins.substring 4 2 hex))}, ${alpha})";
 in {
   programs.waybar = {
@@ -184,6 +184,7 @@ in {
       * {
         font-family: "JetBrainsMono Nerd Font";
         font-size: 14px;
+        font-weight: bold;
         min-height: 0;
       }
 
@@ -192,20 +193,25 @@ in {
       }
 
       .modules-left, .modules-center, .modules-right {
-        background-color: ${toRGBA c.base00 "0.7"};
-        border: 2px solid #${c.base0D};
-        padding: 2px 10px;
-        border-radius: 15px;
+        background-color: ${toRGBA c.base00 "0.5"};
+        border: 1px solid ${toRGBA c.base0D "0.2"};
+        padding: 2px 12px;
+        border-radius: 16px;
         color: #${c.base05};
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
       }
 
       #workspaces button {
         padding: 0 5px;
         color: #${c.base05};
+        margin: 0 2px;
+        transition: all 0.3s ease;
       }
 
       #workspaces button.active {
         color: #${c.base0D};
+        background: ${toRGBA c.base0D "0.2"};
+        border-radius: 10px;
       }
 
       #workspaces button:hover {
@@ -214,12 +220,23 @@ in {
       }
 
       #clock, #cpu, #memory, #pulseaudio, #network, #battery, #tray, #custom-menu, #custom-power, #mpris {
-        padding: 0 10px;
+        padding: 0 8px;
+        margin: 0 2px;
       }
 
       #window {
         padding-left: 10px;
         color: #${c.base0B};
+      }
+
+      tooltip {
+        background: ${toRGBA c.base00 "0.9"};
+        border: 1px solid #${c.base0D};
+        border-radius: 10px;
+      }
+
+      tooltip label {
+        color: #${c.base05};
       }
     '';
   };

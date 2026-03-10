@@ -162,8 +162,8 @@ in {
       };
 
       scrolling = {
-        column_width              = 0.333;
-        fullscreen_on_one_column  = true;
+        column_width              = 0.46;
+        fullscreen_on_one_column  = false;
         focus_fit_method          = 1;
         follow_focus              = true;
         follow_min_visible        = 0.4;
@@ -227,7 +227,7 @@ in {
       ${extraMonitorSettings}
       # To enable blur on waybar uncomment the line below
       # Thanks to SchotjeChrisman
-      layerrule = blur on, match:namespace waybar
+      # layerrule = blur on, match:namespace waybar
       layerrule = blur on, match:namespace wlogout
       #layerrule = ignorezero on, match:namespace wlogout #gives error
     ";

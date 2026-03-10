@@ -58,9 +58,9 @@ in {
         # ============= TERMINALS =============
         "$modifier, T, Terminal, exec, ${terminal}"
         # ============= APPLICATION LAUNCHERS =============
-        "$modifier, K, Keybinds Search Tool, exec, qs-keybinds"
+        "$modifier, K, Legacy Keybinds Menu, exec, list-keybinds"
         "$modifier CTRL,C, Cheatsheets Viewer, exec, qs-cheatsheets"
-        "$modifier SHIFT,K, Legacy Keybinds Menu, exec, list-keybinds"
+        "$modifier SHIFT,K, Keybinds Search Tool, exec, qs-keybinds"
         "$modifier SHIFT,D, Discord, exec, vesktop"
         "$modifier, X, Logout Menu, exec, wlogout"
         "$modifier, Z, Editor, exec, ${editor}"
@@ -94,31 +94,16 @@ in {
         "$modifier SHIFT,right, Move Right, movewindow, r"
         "$modifier SHIFT,up, Move Up, movewindow, u"
         "$modifier SHIFT,down, Move Down, movewindow, d"
-        # ============= WINDOW MOVEMENT (VI STYLE) =============
-        "$modifier SHIFT,h, Move Left (VI), movewindow, l"
-        "$modifier SHIFT,l, Move Right (VI), movewindow, r"
-        "$modifier SHIFT,k, Move Up (VI), movewindow, u"
-        "$modifier SHIFT,j, Move Down (VI), movewindow, d"
         # ============= WINDOW SWAPPING (ARROW KEYS) =============
         "$modifier ALT, left, Swap Left, swapwindow, l"
         "$modifier ALT, right, Swap Right, swapwindow, r"
         "$modifier ALT, up, Swap Up, swapwindow, u"
         "$modifier ALT, down, Swap Down, swapwindow, d"
-        # ============= WINDOW SWAPPING (VI KEYCODES) =============
-        "$modifier ALT, 43, Swap Left (VI), swapwindow, l"
-        "$modifier ALT, 46, Swap Right (VI), swapwindow, r"
-        "$modifier ALT, 45, Swap Up (VI), swapwindow, u"
-        "$modifier ALT, 44, Swap Down (VI), swapwindow, d"
         # ============= FOCUS MOVEMENT (ARROW KEYS) =============
         "$modifier, left, Focus Left, movefocus, l"
         "$modifier, right, Focus Right, movefocus, r"
         "$modifier, up, Focus Up, movefocus, u"
         "$modifier, down, Focus Down, movefocus, d"
-        # ============= FOCUS MOVEMENT (VI STYLE) =============
-        "$modifier, h, Focus Left (VI), movefocus, l"
-        "$modifier, l, Focus Right (VI), movefocus, r"
-        "$modifier, k, Focus Up (VI), movefocus, u"
-        "$modifier, j, Focus Down (VI), movefocus, d"
         # ============= WORKSPACE SWITCHING (1-10) =============
         "$modifier, 1, Workspace 1, workspace, 1"
         "$modifier, 2, Workspace 2, workspace, 2"
@@ -159,67 +144,67 @@ in {
         ",XF86AudioPrev, Previous Track, exec, playerctl previous"
         ",XF86MonBrightnessDown, Brightness Down, exec, brightnessctl set 5%-"
         ",XF86MonBrightnessUp, Brightness Up, exec, brightnessctl set +5%"
+      ]
+      ++ lib.optionals isScrolling [
+        # ── Scrolling Layout specific Navigation ──
+        "$modifier, H, Focus Left (Col), layoutmsg, move -col"
+        "$modifier, L, Focus Right (Col), layoutmsg, move +col"
+        "$modifier, Left, Focus Left (Col), layoutmsg, move -col"
+        "$modifier, Right, Focus Right (Col), layoutmsg, move +col"
+
+        "$modifier SHIFT, H, Swap Left (Col), layoutmsg, swapcol l"
+        "$modifier SHIFT, L, Swap Right (Col), layoutmsg, swapcol r"
+        "$modifier SHIFT, Left, Swap Left (Col), layoutmsg, swapcol l"
+        "$modifier SHIFT, Right, Swap Right (Col), layoutmsg, swapcol r"
+
+        "$modifier SHIFT, period, Move Window Right (Col), layoutmsg, movewindowto r"
+        "$modifier SHIFT, comma, Move Window Left (Col), layoutmsg, movewindowto l"
+
+        "$modifier, R, Resize Column +, layoutmsg, colresize +conf"
+        "$modifier SHIFT, R, Resize Column -, layoutmsg, colresize -conf"
+
+        "$modifier, C, Center Column, layoutmsg, alignwindow c"
+        "$modifier SHIFT, F, Fit All Columns, layoutmsg, fitsize all"
+
+        "$modifier CTRL, 1, Move Column to WS 1, layoutmsg, movecolumn 1"
+        "$modifier CTRL, 2, Move Column to WS 2, layoutmsg, movecolumn 2"
+        "$modifier CTRL, 3, Move Column to WS 3, layoutmsg, movecolumn 3"
+        "$modifier CTRL, 4, Move Column to WS 4, layoutmsg, movecolumn 4"
+        "$modifier CTRL, 5, Move Column to WS 5, layoutmsg, movecolumn 5"
+
+        # Mausrad-Navigation (Scrolling)
+        "$modifier, mouse_down, Focus Left (Col), layoutmsg, move -col"
+        "$modifier, mouse_up, Focus Right (Col), layoutmsg, move +col"
+        "$modifier SHIFT, mouse_down, Swap Right (Col), layoutmsg, swapcol r"
+        "$modifier SHIFT, mouse_up, Swap Left (Col), layoutmsg, swapcol l"
+        "$modifier CTRL, mouse_down, Resize Column +, layoutmsg, colresize +conf"
+        "$modifier CTRL, mouse_up, Resize Column -, layoutmsg, colresize -conf"
+      ]
+      ++ lib.optionals (!isScrolling) [
+        # ── Standard (Dwindle/Master) VI-Style Navigation ──
+        "$modifier SHIFT,h, Move Left (VI), movewindow, l"
+        "$modifier SHIFT,l, Move Right (VI), movewindow, r"
+        "$modifier SHIFT,k, Move Up (VI), movewindow, u"
+        "$modifier SHIFT,j, Move Down (VI), movewindow, d"
+
+        "$modifier ALT, h, Swap Left (VI), swapwindow, l"
+        "$modifier ALT, l, Swap Right (VI), swapwindow, r"
+        "$modifier ALT, k, Swap Up (VI), swapwindow, u"
+        "$modifier ALT, j, Swap Down (VI), swapwindow, d"
+
+        "$modifier, h, Focus Left (VI), movefocus, l"
+        "$modifier, l, Focus Right (VI), movefocus, r"
+        "$modifier, k, Focus Up (VI), movefocus, u"
+        "$modifier, j, Focus Down (VI), movefocus, d"
       ];
 
 
-    bindm = [
-      "$modifier, mouse:272, movewindow"
-      "$modifier, mouse:273, resizewindow"
+    bindmd = [
+      "$modifier, mouse:272, Move Window, movewindow"
+      "$modifier, mouse:273, Resize Window, resizewindow"
     ];
 
-
-    bind =
-      # ── Navigations-Binds: Layout-abhängig ────────────────────────────
-      # Scrolling: horizontal mit H/L zwischen Spalten, vertikal J/K
-      # Dwindle:   standard movefocus in alle Richtungen
-       [
-        # Fokus-Navigation
-        "$modifier, H,            layoutmsg, move -col"
-        "$modifier, L,            layoutmsg, move +col"
-        "$modifier, Left,         layoutmsg, move -col"
-        "$modifier, Right,        layoutmsg, move +col"
-        "$modifier, K,            movefocus, u"
-        "$modifier, J,            movefocus, d"
-        "$modifier, Up,           movefocus, u"
-        "$modifier, Down,         movefocus, d"
-
-        # Spalten tauschen
-        "$modifier SHIFT, H,      layoutmsg, swapcol l"
-        "$modifier SHIFT, L,      layoutmsg, swapcol r"
-        "$modifier SHIFT, Left,   layoutmsg, swapcol l"
-        "$modifier SHIFT, Right,  layoutmsg, swapcol r"
-        "$modifier SHIFT, K,      movewindow, u"
-        "$modifier SHIFT, J,      movewindow, d"
-        "$modifier SHIFT, Up,     movewindow, u"
-        "$modifier SHIFT, Down,   movewindow, d"
-
-        # Fenster aus Spalte heraus → neue Spalte
-        "$modifier SHIFT, period, layoutmsg, movewindowto r"
-        "$modifier SHIFT, comma,  layoutmsg, movewindowto l"
-
-        # Spaltenbreite cyclen (explicit_column_widths aus variables.nix)
-        "$modifier, R,            layoutmsg, colresize +conf"
-        "$modifier SHIFT, R,      layoutmsg, colresize -conf"
-
-        # Spalte zentrieren / alle verteilen
-        "$modifier, C,            layoutmsg, alignwindow c"
-        "$modifier SHIFT, F,      layoutmsg, fitsize all"
-
-        # Workspace: ganze Spalte verschieben (erhält Spaltenstruktur)
-        "$modifier CTRL, 1,       layoutmsg, movecolumn 1"
-        "$modifier CTRL, 2,       layoutmsg, movecolumn 2"
-        "$modifier CTRL, 3,       layoutmsg, movecolumn 3"
-        "$modifier CTRL, 4,       layoutmsg, movecolumn 4"
-        "$modifier CTRL, 5,       layoutmsg, movecolumn 5"
-
-        # Mausrad-Navigation
-        "$modifier, mouse_down, layoutmsg, move -col"
-        "$modifier, mouse_up,   layoutmsg, move +col"
-        "$modifier SHIFT, mouse_down, layoutmsg, swapcol r"
-        "$modifier SHIFT, mouse_up,   layoutmsg, swapcol l"
-        "$modifier CTRL, mouse_down, layoutmsg, colresize +conf"
-        "$modifier CTRL, mouse_up, layoutmsg, colresize -conf"
-      ];
+    bind = [];
 
   };
 }

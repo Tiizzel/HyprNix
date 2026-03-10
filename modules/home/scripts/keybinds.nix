@@ -11,15 +11,18 @@ pkgs.writeShellScriptBin "list-keybinds" ''
   BIND_NIX="$HOME/HyprNix/modules/home/hyprland/binds.nix"
   if [[ -f "$BIND_NIX" ]]; then
     display_keybinds=$(
-      ${pkgs.gawk}/bin/awk '
-        # Track when we enter any keybind array
-        /noctaliaBind/ { in_block = 1; next }
-        /rofiBind/ { in_block = 1; next }
-        /bindd[ ]*=/ && /\[/ { in_block = 1; next }
+      ${pkgs.gawk}/bin/awk -f - "$BIND_NIX" <<'EOF'
+        # Match any variable or keyword containing "bind" followed by =
+        /([A-Za-z]*[Bb]ind[A-Za-z]*)[ ]*=/ { 
+          in_block=1; 
+          btype=$0; 
+          sub(/[ ]*=.*/, "", btype); 
+          gsub(/^[ ]+/, "", btype); 
+        }
 
         in_block {
           # Check for end of array
-          if (/^[ ]*\]/) {
+          if (/\][ ]*;?/) {
             in_block = 0
             next
           }
@@ -28,33 +31,34 @@ pkgs.writeShellScriptBin "list-keybinds" ''
           if (match($0, /"([^"]+)"/, arr)) {
             line = arr[1]
 
-            # Split by comma to get: mods, key, desc, action, params
+            # Split by comma to get parts
             n = split(line, parts, ",")
-            if (n >= 3) {
-              # Extract and trim each part
-              mods = parts[1]
-              key = parts[2]
-              desc = parts[3]
+            
+            # Extract and trim parts
+            mods = parts[1]; sub(/^[[:space:]]*/, "", mods); sub(/[[:space:]]*$/, "", mods)
+            key = parts[2];  sub(/^[[:space:]]*/, "", key);  sub(/[[:space:]]*$/, "", key)
+            
+            # For bindd/bindmd or variable binds, the third part is the description
+            if (btype ~ /bindm?d/ || btype ~ /[A-Z].*Bind/) {
+                desc = parts[3]; sub(/^[[:space:]]*/, "", desc); sub(/[[:space:]]*$/, "", desc)
+            } else {
+                # Fallback: if it is a standard bind, we don't have a desc field
+                desc = parts[3]; sub(/^[[:space:]]*/, "", desc); sub(/[[:space:]]*$/, "", desc)
+            }
 
-              gsub(/^[ \t]+|[ \t]+$/, "", mods)
-              gsub(/^[ \t]+|[ \t]+$/, "", key)
-              gsub(/^[ \t]+|[ \t]+$/, "", desc)
+            # Build display keybind
+            display = key
+            if (mods != "") display = mods " + " key
+            gsub(/\$modifier/, "SUPER", display)
+            gsub(/ +/, " ", display)
 
-              # Build display keybind
-              if (mods != "" && key != "") {
-                display = mods " + " key
-                gsub(/\$modifier/, "SUPER", display)
-                gsub(/ +/, " ", display)
-
-                # Output: "KEYBIND: Description"
-                if (desc != "") {
-                  printf "%s: %s\n", display, desc
-                }
-              }
+            # Output: "KEYBIND: Description"
+            if (desc != "") {
+              printf "%s: %s\n", display, desc
             }
           }
         }
-      ' "$BIND_NIX"
+EOF
     )
   else
     # Fallback: Show error message

@@ -23,7 +23,7 @@ in {
       "--margin=1"
       "--layout=reverse"
       "--border=none"
-      "--info='hidden'"
+      "--info='inline'"
       "--header=''"
       "--prompt='/ '"
       "-i"

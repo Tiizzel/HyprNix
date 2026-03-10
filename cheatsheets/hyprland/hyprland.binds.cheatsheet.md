@@ -1,97 +1,95 @@
 English | [Español](./hyprland.binds.cheatsheet.es.md)
 
-# Hyprland Keybindings — ZaneyOS
+# Hyprland Keybindings — HyprNix
 ## 🗝️ Conventions
-- SUPERKEY = Mod key (Hyprland `$modifier`)
+- SUPER = Mod key (Hyprland `$modifier`)
 - SHIFT, CTRL, ALT used as shown
 - Arrows and hjkl are both supported for movement
 
 ---
 
 ## 🚀 Launchers & Overview
-- SUPERKEY+CTRL+D — Toggle Dock
-- ALT+Space — Workspace Overview
-- SUPERKEY+A — App Overview
-- SUPERKEY+R — Rofi Legacy Menu
-- SUPERKEY+D — Rofi Menu
+- SUPER + Space — Application Launcher (Noctalia or Rofi)
+- SUPER + Shift + Return — Application Launcher (Noctalia or Rofi)
+- SUPER + Tab — Quickshell Overview
+- SUPER + Ctrl + D — Toggle Dock
+- SUPER + K — Legacy Keybinds Menu
+- SUPER + Shift + K — Keybinds Search Tool (qs-keybinds)
+- SUPER + Ctrl + C — Cheatsheets Viewer (qs-cheatsheets)
 
 ## 🖥️ Terminals
-- SUPERKEY+Return — Terminal
-- SUPERKEY+SHIFT+Return — Foot Terminal (Floating)
-- SUPERKEY+ALT+Return — WezTerm
-- SUPERKEY+CTRL+Return — Ghostty
-- SUPERKEY+SHIFT+T — Scratchpad Terminal
+- SUPER + T — Terminal
+- SUPER + Shift + T — Dropdown Terminal (Scratchpad)
 
 ## ✍️ Editors & IDEs
-- ALT+E — Emacs Floating
-- SUPERKEY+E — Emacs
-- SUPERKEY+G — VS Code
+- SUPER + Z — Editor (from variables)
+- SUPER + G — GIMP
 
 ## 🌐 Web & Communication
-- SUPERKEY+W — Web Browser
-- SUPERKEY+ALT+D — Discord Canary
+- SUPER + B — Web Browser
+- SUPER + Shift + D — Discord (Vesktop)
+- SUPER + Alt + W — Web Search
 
 ## 📁 File Management
-- SUPERKEY+T — Thunar
-- SUPERKEY+Y — Yazi
+- SUPER + F — Thunar
+- SUPER + Y — Yazi (in Terminal)
 
 ## 🛠️ System Utilities
-- SUPERKEY+V — Clipboard History
-- SUPERKEY+N — Create Note From Clipboard
-- SUPERKEY+C — Color Picker
-- SUPERKEY+S — Screenshot
-- SUPERKEY+SHIFT+S — Screenshot Satty
-- ALT+SHIFT+S — Screenshot Region
-- SUPERKEY+O — OBS Studio
-- SUPERKEY+M — Audio Control
-- SUPERKEY+SHIFT+E — Emoji Picker
+- SUPER + V — Clipboard Manager
+- SUPER + C — Control Center (if Noctalia) or Rofi Clipboard (if Waybar)
+- SUPER + S — Screenshot (Region/Active/Window selector)
+- SUPER + Ctrl + S — Screenshot Output
+- SUPER + Shift + S — Screenshot Window
+- SUPER + Alt + S — Screenshot Region
+- SUPER + O — OBS Studio
+- SUPER + Alt + C — Color Picker
+- SUPER + Alt + M — Audio Control (pavucontrol)
+- SUPER + E — Emoji Picker
 
 ## ⚙️ Settings & System
-- SUPERKEY+ALT+S — Settings Dialog
-- SUPERKEY+SHIFT+N — Notifications Reset
-- SUPERKEY+SHIFT+P — Power Menu
-- SUPERKEY+SHIFT+W — Apply Wallpapers
-- SUPERKEY+ALT+W — Warp Build
-- ALT+SHIFT+Q — Logout Menu
-
-## 📖 Docs & Help
-- SUPERKEY+SHIFT+K — Keybinds Help
-- SUPERKEY+SHIFT+C — Cheatsheets
-- SUPERKEY+SHIFT+D — Docs
+- SUPER + X — Power Menu / Logout Menu (wlogout or Noctalia)
+- SUPER + Shift + N — Notifications Reset
+- SUPER + Shift + W — Apply Wallpapers / QS Wallpaper Setter
+- SUPER + M — Notifications History (if Noctalia)
+- SUPER + Alt + P — Settings Menu (if Noctalia)
 
 ## 🪟 Window Management
-- SUPERKEY+SHIFT+G — Smart Gaps Toggle
-- SUPERKEY+Q — Kill Active Window
-- SUPERKEY+F — Toggle Fullscreen
-- SUPERKEY+ALT+F — Maximize (keep bars)
-- SUPERKEY+SHIFT+F — Toggle Floating
-- SUPERKEY+Space — Toggle Floating
-- SUPERKEY+SHIFT+Space — Workspace All Float
-- SUPERKEY+P — Pseudo Tile
-- SUPERKEY+SHIFT+M — Swap Layout
-- SUPERKEY+SHIFT+I — Toggle Split
-
-### Move Window
-- SUPERKEY+SHIFT+Left/Right/Up/Down — Move Window Left/Right/Up/Down
-- SUPERKEY+SHIFT+H/J/K/L — Move Window Left/Right/Up/Down
-
-### Swap Window
-- SUPERKEY+ALT+Left/Right/Up/Down — Swap Window Left/Right/Up/Down
-- SUPERKEY+ALT+43/46/45/44 — Swap Window Left/Right/Up/Down
+- SUPER + Q — Kill Active Window
+- SUPER + Ctrl + F — Toggle Fullscreen
+- SUPER + Shift + F — Toggle Floating
+- SUPER + Alt + F — Workspace All Float
+- SUPER + P — Pseudo Tile
+- SUPER + Shift + I — Toggle Split
+- SUPER + N — Toggle Special Workspace (Scratchpad)
+- SUPER + Shift + Space — Move Window to Special Workspace
 
 ### Focus Movement
-- SUPERKEY+Left/Right/Up/Down — Focus Left/Right/Up/Down
-- SUPERKEY+H/J/K/L — Focus Left/Right/Up/Down
+- SUPER + Left/Right/Up/Down — Focus Left/Right/Up/Down
+- SUPER + H/J/K/L — Focus Left/Right/Up/Down (if not Scrolling layout)
 
-### Window Cycling
-- ALT+Tab — Cycle Next Window
-- ALT+Tab — Bring Active To Top
+### Move Window
+- SUPER + SHIFT + Left/Right/Up/Down — Move Window Left/Right/Up/Down
+- SUPER + SHIFT + H/J/K/L — Move Window Left/Right/Up/Down (if not Scrolling layout)
+
+### Swap Window
+- SUPER + ALT + Left/Right/Up/Down — Swap Window Left/Right/Up/Down
+- SUPER + ALT + H/J/K/L — Swap Window Left/Right/Up/Down (if not Scrolling layout)
+
+## 🔄 Scrolling Layout Specifics
+- SUPER + H/L / Left/Right — Navigate Columns
+- SUPER + J/K / Up/Down — Navigate inside Column
+- SUPER + Shift + H/L — Swap Columns
+- SUPER + Shift + Period/Comma — Move window to new column Right/Left
+- SUPER + R / Shift + R — Resize Column Width
+- SUPER + C — Center Column
+- SUPER + Shift + F — Fit All Columns
+- SUPER + Ctrl + 1-5 — Move Column to Workspace
 
 ## 🗂️ Workspaces
-- SUPERKEY+1..9,0 — Workspace 1..10
-- SUPERKEY+SHIFT+1..9,0 — Move To Workspace 1..10
-- SUPERKEY+CTRL+Right/Left — Next/Previous Workspace
-- SUPERKEY+Mouse Wheel Down/Up — Next/Previous Workspace
+- SUPER + 1..9,0 — Switch Workspace 1..10
+- SUPER + SHIFT + 1..9,0 — Move Window to Workspace 1..10
+- SUPER + CTRL + Right/Left — Next/Previous Workspace
+- SUPER + Mouse Wheel Down/Up — Navigate Columns (Scrolling) / Workspaces (Dwindle)
 
 ## 🔊 Media & Brightness
 - XF86AudioRaiseVolume — Volume Up
@@ -102,6 +100,5 @@ English | [Español](./hyprland.binds.cheatsheet.es.md)
 - XF86MonBrightnessDown/Up — Brightness Down/Up
 
 ## 🖱️ Mouse Bindings
-- SUPERKEY + Left Mouse — Move window
-- SUPERKEY + Right Mouse — Resize window
-
+- SUPER + Left Mouse — Move window
+- SUPER + Right Mouse — Resize window

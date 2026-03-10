@@ -184,12 +184,13 @@ in {
           enabled = true;
           size = 5;
           passes = 3;
-          ignore_opacity = false;
+          ignore_opacity = true;
           new_optimizations = true;
+          xray = true;
         };
         shadow = {
           enabled = true;
-          range = 4;
+          range = 32;
           render_power = 3;
           color = "rgba(1a1a1aee)";
         };
@@ -226,9 +227,9 @@ in {
       ${extraMonitorSettings}
       # To enable blur on waybar uncomment the line below
       # Thanks to SchotjeChrisman
-      #layerrule = blur,waybar
-      #layerrule = blur, wlogout
-      #layerrule = ignorezero, wlogout
+      layerrule = blur on, match:namespace waybar
+      layerrule = blur on, match:namespace wlogout
+      #layerrule = ignorezero on, match:namespace wlogout #gives error
     ";
   };
 }

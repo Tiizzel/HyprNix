@@ -56,20 +56,37 @@ The `zcli` utility is your primary way to interact with HyprNix.
 
 ## ⌨️ Hyprland Keybindings
 
+### Core Binds
 | Keybind | Action |
 | :--- | :--- |
-| `SUPER + Space` | Open Terminal (`kitty` by default) |
-| `SUPER + D` | Application Launcher |
+| `SUPER + T` | Open Terminal (`kitty` by default) |
+| `SUPER + Space` | Application Launcher (Noctalia or Rofi) |
 | `SUPER + Q` | Kill Active Window |
-| `SUPER + F` | Toggle Fullscreen |
+| `SUPER + Ctrl + F` | Toggle Fullscreen |
 | `SUPER + Shift + F` | Toggle Floating Mode |
 | `SUPER + Tab` | Toggle Quickshell Overview |
 | `SUPER + B` | Open Web Browser |
 | `SUPER + S` | Take Screenshot |
 | `SUPER + V` | Clipboard Manager |
-| `SUPER + X` | Power Menu (`wlogout`) |
-| `SUPER + 1-9` | Switch Workspace |
-| `SUPER + Shift + 1-9` | Move Window to Workspace |
+| `SUPER + X` | Power Menu / Logout Menu |
+| `SUPER + 1-0` | Switch Workspace (1-10) |
+| `SUPER + Shift + 1-0` | Move Window to Workspace (1-10) |
+| `SUPER + N` | Toggle Special Workspace (Scratchpad) |
+
+### Navigation & Layout
+HyprNix supports multiple layouts. Navigation keys adapt based on your `hyprlandLayout` setting in `variables.nix`.
+
+**Standard Navigation (Dwindle/Master):**
+- `SUPER + H/J/K/L` or `Arrows`: Focus movement.
+- `SUPER + Shift + H/J/K/L` or `Arrows`: Move window.
+- `SUPER + Alt + H/J/K/L` or `Arrows`: Swap window.
+
+**Scrolling Layout:**
+- `SUPER + H/L` or `Left/Right`: Navigate between columns.
+- `SUPER + J/K` or `Up/Down`: Navigate within a column.
+- `SUPER + R` / `Shift + R`: Resize column width.
+- `SUPER + C`: Center current column.
+- `SUPER + Shift + F`: Fit all columns to screen.
 
 ---
 

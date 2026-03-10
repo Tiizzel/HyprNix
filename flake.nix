@@ -37,10 +37,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #hytale-launcher = {
-    #  url = "github:JPyke3/hytale-launcher-nix";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    hytale-launcher = {
+      url = "github:JPyke3/hytale-launcher-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     zen-browser = {
         url = "github:0xc000022070/zen-browser-flake";
@@ -61,7 +61,7 @@
     nixvim,
     nvf,
     nix-flatpak,
-    #hytale-launcher,
+    hytale-launcher,
     alejandra,
     chaotic,
     ...

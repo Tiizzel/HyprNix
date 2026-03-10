@@ -194,11 +194,11 @@ in {
 
       .modules-left, .modules-center, .modules-right {
         background-color: ${toRGBA c.base00 "0.5"};
-        border: 1px solid ${toRGBA c.base0D "0.2"};
+        border: 3px solid ${toRGBA c.base0D "0.3"};
         padding: 2px 12px;
         border-radius: 16px;
         color: #${c.base05};
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
       }
 
       #workspaces button {

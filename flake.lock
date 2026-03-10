@@ -396,6 +396,26 @@
         "type": "github"
       }
     },
+    "hytale-launcher": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773073154,
+        "narHash": "sha256-x0BcLaOmcwM6kZP0RIjXQJkeivz5qo/uCNePo8/NexA=",
+        "owner": "JPyke3",
+        "repo": "hytale-launcher-nix",
+        "rev": "7fecb1b70f75f9f9d7b89ebb6c9511db1ef58725",
+        "type": "github"
+      },
+      "original": {
+        "owner": "JPyke3",
+        "repo": "hytale-launcher-nix",
+        "type": "github"
+      }
+    },
     "jovian": {
       "inputs": {
         "nix-github-actions": "nix-github-actions",
@@ -662,6 +682,7 @@
         "antigravity-nix": "antigravity-nix",
         "chaotic": "chaotic",
         "home-manager": "home-manager_2",
+        "hytale-launcher": "hytale-launcher",
         "nix-flatpak": "nix-flatpak",
         "nixpkgs": "nixpkgs_2",
         "nixvim": "nixvim",

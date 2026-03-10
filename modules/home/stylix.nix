@@ -1,6 +1,7 @@
-_: {
+{ lib, ... }: {
+  stylix.enable = true;
   stylix.targets = {
-    # Avoid fetching GNOME Shell sources on non-GNOME systems (breaks on some remotes)
+    # Avoid fetching GNOME Shell sources on non-GNOME systems
     gnome.enable = false;
     waybar.enable = false;
     rofi.enable = false;

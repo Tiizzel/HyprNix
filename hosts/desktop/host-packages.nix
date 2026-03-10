@@ -7,6 +7,5 @@
     nodejs # Node.js
     qbittorrent # qBittorrent
     scanmem # Cheat Engine
-    taterclient-ddnet # TaterClient DDNet
   ];
 }

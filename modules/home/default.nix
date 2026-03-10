@@ -12,6 +12,7 @@
     helixEnable
     doomEmacsEnable
     antigravityEnable
+    taterclientEnable
     ;
   # Select bar module based on barChoice
   barModule =
@@ -103,6 +104,11 @@ in {
     ++ (
       if tmuxEnable
       then [./terminals/tmux.nix]
+      else []
+    )
+    ++ (
+      if taterclientEnable
+      then [./tclient.nix]
       else []
     )
     ++ (

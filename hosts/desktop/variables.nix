@@ -72,6 +72,7 @@
   # ────────────────────────────────────────────────────────────────────────────
 
   # Application Enablers
+  taterclientEnable = true;
   thunarEnable    = true;  # GUI File Manager (Yazi is default CLI)
   tmuxEnable      = false;
   alacrittyEnable = false;

@@ -174,7 +174,8 @@ in {
 
         "custom/power" = {
           "format" = "⏻";
-          "on-click" = "wlogout";
+                     "on-click" = "wlogout -b 6";
+          
           "tooltip" = false;
         };
       }

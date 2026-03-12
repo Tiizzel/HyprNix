@@ -116,8 +116,8 @@ in
         property string iconsPath: "$ICONS_DIR"
 
         // Size window to match menu content only
-        width: 520  // Slightly larger than menu to allow for positioning
-        height: 320
+        width: 800  // Wider for horizontal row
+        height: 180 // Shorter for single row
 
         // Button definitions with Spanish support
         property bool useSpanish: $SPANISH == "1"
@@ -175,7 +175,7 @@ in
             GridLayout {
                     anchors.fill: parent
                     anchors.margins: 20
-                    columns: 3
+                    columns: 6
                     columnSpacing: 8
                     rowSpacing: 8
 

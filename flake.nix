@@ -52,8 +52,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-  };
+        chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+        nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+      };
 
   outputs = {
     nixpkgs,
@@ -64,6 +65,7 @@
     hytale-launcher,
     alejandra,
     chaotic,
+    nix-cachyos-kernel,
     ...
   } @ inputs: let
     system = "x86_64-linux";

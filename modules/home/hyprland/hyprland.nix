@@ -182,7 +182,7 @@ in {
         inactive_opacity = inactiveOpacity;
         blur = {
           enabled = true;
-          size = 5;
+          size = 8;
           passes = 3;
           ignore_opacity = true;
           new_optimizations = true;

@@ -1,10 +1,26 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   blurredImage = pkgs.runCommand "blurred-wallpaper.png" {
     nativeBuildInputs = [ pkgs.imagemagick ];
   } ''
     convert ${config.stylix.image} -blur 0x25 $out
   '';
+  c = config.lib.stylix.colors;
+  # Helper to convert hex to decimal
+  hexToDec = hex: let
+    digits = {
+      "0" = 0; "1" = 1; "2" = 2; "3" = 3; "4" = 4; "5" = 5; "6" = 6; "7" = 7;
+      "8" = 8; "9" = 9; "a" = 10; "b" = 11; "c" = 12; "d" = 13; "e" = 14; "f" = 15;
+      "A" = 10; "B" = 11; "C" = 12; "D" = 13; "E" = 14; "F" = 15;
+    };
+    high = builtins.substring 0 1 hex;
+    low = builtins.substring 1 1 hex;
+  in
+    (digits."${high}" * 16) + digits."${low}";
+
+  # Format as rgba decimal string
+  toRGBA = hex: alpha:
+    "rgba(${toString (hexToDec (builtins.substring 0 2 hex))}, ${toString (hexToDec (builtins.substring 2 2 hex))}, ${toString (hexToDec (builtins.substring 4 2 hex))}, ${alpha})";
 in {
   programs.wlogout = {
     enable = true;
@@ -50,7 +66,9 @@ in {
     style = ''
       * {
         background-image: none;
-        font-family: "JetBrains Mono Nerd Font", "Fira Sans Semibold", sans-serif;
+        box-shadow: none;
+        text-shadow: none;
+        font-family: "${config.stylix.fonts.sansSerif.name}", "JetBrains Mono Nerd Font", sans-serif;
       }
 
       window {
@@ -58,30 +76,39 @@ in {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+        background-color: ${toRGBA c.base00 "0.5"};
       }
 
       button {
-        color: #${config.lib.stylix.colors.base05};
-        background-color: rgba(30, 30, 46, 0.5);
+        color: #${c.base05};
+        background-color: ${toRGBA c.base01 "0.4"};
         outline-style: none;
-        border: 2px solid rgba(255, 255, 255, 0.1);
+        border: 2px solid ${toRGBA c.base05 "0.1"};
         background-repeat: no-repeat;
         background-position: center;
         background-size: 25%;
-        border-radius: 20px;
-        box-shadow: none;
-        text-shadow: none;
-        margin: 10px;
-        transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682);
+        border-radius: 15px;
+        margin: 15px;
+        transition: all 0.2s cubic-bezier(.55, 0.0, .28, 1.682);
       }
 
       button:focus,
       button:active,
       button:hover {
-        background-color: rgba(137, 180, 250, 0.5);
-        border: 2px solid #${config.lib.stylix.colors.base0D};
+        color: #${c.base0D};
+        background-color: ${toRGBA c.base02 "0.6"};
+        border: 2px solid #${c.base0D};
         background-size: 30%;
-        color: #${config.lib.stylix.colors.base0B};
+      }
+
+      button label {
+        color: #${c.base05};
+        font-size: 16px;
+        margin-top: 110px;
+      }
+
+      button:hover label {
+        color: #${c.base0D};
       }
 
       #shutdown {
@@ -93,6 +120,7 @@ in {
       }
 
       #suspend {
+        background-image: image(url("icons/suspend.png"));
       }
 
       #lock {

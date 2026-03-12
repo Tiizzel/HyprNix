@@ -10,7 +10,7 @@
     ghostty.enable = false;
     firefox = {
       enable = true;
-      profileNames = [ "default" ];
+      profileNames = [ "desktop" ];
     };
     zen-browser = {
       enable = true;

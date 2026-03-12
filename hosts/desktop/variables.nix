@@ -103,7 +103,7 @@
   inactiveOpacity = 0.69;
 
   # Wallpaper & Color Palette
-  stylixImage = ../../wallpapers/aishot-3247.jpg;
+  stylixImage = ../../wallpapers/aishot-1533.jpg;
 
   # Waybar Presets (Uncomment one)
   waybarChoice = ../../modules/home/waybar/waybar-hyprnix.nix;

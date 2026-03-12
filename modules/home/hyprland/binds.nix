@@ -62,7 +62,7 @@ in {
         "$modifier CTRL,C, Cheatsheets Viewer, exec, qs-cheatsheets"
         "$modifier SHIFT,K, Keybinds Search Tool, exec, qs-keybinds"
         "$modifier SHIFT,D, Discord, exec, vesktop"
-        "$modifier, X, Logout Menu, exec, wlogout"
+        "$modifier, X, Logout Menu, exec, wlogout -b 6"
         "$modifier, Z, Editor, exec, ${editor}"
         "$modifier ALT,W, Web Search, exec, web-search"
         "$modifier SHIFT,W, QS Wallpaper Setter, exec, qs-wallpapers-apply"

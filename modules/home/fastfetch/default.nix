@@ -72,6 +72,11 @@
           showPeCoreCount = true;
         }
         {
+          key = "│ {#33}󰢮 gpu     {#keys}│";
+          type = "gpu";
+        }
+
+        {
           key = "│ {#34}󰉉 disk    {#keys}│";
           type = "disk";
           folders = "/";

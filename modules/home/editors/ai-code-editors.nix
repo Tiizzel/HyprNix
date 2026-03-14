@@ -5,8 +5,4 @@
     claude-code
     gemini-cli
   ];
-
-  programs.zed-editor = {
-    enable = true;
-  };
 }

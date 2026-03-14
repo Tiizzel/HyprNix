@@ -3,8 +3,11 @@
   pkgs,
   username,
   profile,
+  host,
   ...
-}: {
+}: let
+  inherit (import ../../../hosts/${host}/variables.nix) temperatureUnit;
+in {
   home.packages = [
     (import ./emopicker9000.nix {inherit pkgs;})
     (import ./hm-find.nix {inherit pkgs;})
@@ -44,5 +47,5 @@
         ".config/mimeapps.list.backup"
       ];
     })
-  ] ++ (import ./waybar-scripts.nix {inherit pkgs;});
+  ] ++ (import ./waybar-scripts.nix {inherit pkgs temperatureUnit;});
 }

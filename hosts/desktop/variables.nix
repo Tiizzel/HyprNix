@@ -61,6 +61,7 @@
 
   # Waybar Settings (used when barChoice = "waybar")
   clock24h = true;
+  temperatureUnit = "metric"; # Options: "metric", "imperial"
 
   # Terminal & Editor
   terminal = "kitty";  # Options: Kitty, ghostty, wezterm, alacritty
@@ -82,7 +83,7 @@
   vscodeEnable    = false;
   antigravityEnable = false; # Google fork of VSCodium
   helixEnable     = false; # Evil-helix with VIM binds
-  doomEmacsEnable = false; # Requires: zcli doom install
+  doomEmacsEnable = false; # Requires: tcli doom install
 
   # MIME Defaults (XDG)
   mimeDefaultApps = {

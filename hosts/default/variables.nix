@@ -48,6 +48,7 @@
 
   # Waybar Settings (used when barChoice = "waybar")
   clock24h = false;
+  temperatureUnit = "metric"; # Options: "metric", "imperial"
 
   # Program Options
   # Set Default Browser (google-chrome-stable for google-chrome)

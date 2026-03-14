@@ -55,13 +55,25 @@ thermo_icon=$(get_temperature_icon "$temp")
 
 # high temp warning
 if [ "$temp" == "--" ] || [ "$temp" -ge 80 ]; then
-  text_output="<span color='#f38ba8'>${thermo_icon} ${temp}°C</span>"
+  if [ "$TEMPERATURE_UNIT" == "imperial" ]; then
+    text_output="<span color='#f38ba8'>${thermo_icon} ${temp_f}°F</span>"
+  else
+    text_output="<span color='#f38ba8'>${thermo_icon} ${temp}°C</span>"
+  fi
 else
-  text_output="${thermo_icon} ${temp}°C"
+  if [ "$TEMPERATURE_UNIT" == "imperial" ]; then
+    text_output="${thermo_icon} ${temp_f}°F"
+  else
+    text_output="${thermo_icon} ${temp}°C"
+  fi
 fi
 
 tooltip=":: ${model}\n"
-tooltip+="Clock Speed: ${cpu_frequency}\nTemperature: ${temp_f}°F"
+if [ "$TEMPERATURE_UNIT" == "imperial" ]; then
+  tooltip+="Clock Speed: ${cpu_frequency}\nTemperature: ${temp_f}°F"
+else
+  tooltip+="Clock Speed: ${cpu_frequency}\nTemperature: ${temp}°C"
+fi
 
 # module and tooltip
 echo "{\"text\": \"$text_output\", \"tooltip\": \"$tooltip\"}"

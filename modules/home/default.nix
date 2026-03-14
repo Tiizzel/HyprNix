@@ -113,6 +113,11 @@ in {
       else []
     )
     ++ (
+      if aiCodeEditorsEnable
+      then [./editors/ai-code-editors.nix]
+      else []
+    )
+    ++ (
       if alacrittyEnable
       then [./terminals/alacritty.nix]
       else []

@@ -1,7 +1,14 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  temperatureUnit,
+  ...
+}: let
   # Helper to create a shell script package
   mkScript = name: file:
-    pkgs.writeShellScriptBin name (builtins.readFile file);
+    pkgs.writeShellScriptBin name ''
+      export TEMPERATURE_UNIT="${temperatureUnit}"
+      ${builtins.readFile file}
+    '';
 
   # Waybar Scripts
   battery-level = mkScript "waybar-battery-level" ../waybar/scripts/battery-level.sh;
@@ -13,9 +20,12 @@
   wifi-status = mkScript "waybar-wifi-status" ../waybar/scripts/wifi-status.sh;
 
   # Python script for weather
-  weather = pkgs.writers.writePython3Bin "waybar-weather" {
-    libraries = [pkgs.python3Packages.requests];
-  } (builtins.readFile ../waybar/scripts/Weather.py);
+  weather = pkgs.writeScriptBin "waybar-weather" ''
+    #!${pkgs.python3.withPackages (ps: [ps.requests])}/bin/python3
+    import os
+    os.environ["WEATHER_UNITS"] = "${temperatureUnit}"
+    ${builtins.readFile ../waybar/scripts/Weather.py}
+  '';
 in [
   battery-level
   battery-state

@@ -22,6 +22,12 @@ with lib; let
   toRGBA = hex: alpha:
     "rgba(${toString (hexToDec (builtins.substring 0 2 hex))}, ${toString (hexToDec (builtins.substring 2 2 hex))}, ${toString (hexToDec (builtins.substring 4 2 hex))}, ${alpha})";
 in {
+  home.file.".config/waybar/scripts" = {
+    source = ./scripts;
+    recursive = true;
+    executable = true;
+  };
+
   programs.waybar = {
     enable = true;
     package = pkgs.waybar;
@@ -49,14 +55,28 @@ in {
         ];
 
         "modules-right" = [
-          "cpu"
-          "memory"
+          "custom/weather"
+          #"custom/cpu-temp"
+          #"cpu"
+          #"memory"
           "pulseaudio"
           "network"
-          "battery"
+          #"battery"
           "tray"
           "custom/power"
         ];
+
+        "custom/weather" = {
+          "exec" = "waybar-weather";
+          "return-type" = "json";
+          "interval" = 600;
+        };
+
+        "custom/cpu-temp" = {
+          "exec" = "waybar-cpu-temp";
+          "return-type" = "json";
+          "interval" = 5;
+        };
 
         "mpris" = {
           "format" = "{player_icon} {title} - {artist}";
@@ -174,8 +194,7 @@ in {
 
         "custom/power" = {
           "format" = "⏻";
-                     "on-click" = "wlogout -b 6";
-          
+          "on-click" = "waybar-power-menu";
           "tooltip" = false;
         };
       }
@@ -220,7 +239,7 @@ in {
         border-radius: 10px;
       }
 
-      #clock, #cpu, #memory, #pulseaudio, #network, #battery, #tray, #custom-menu, #custom-power, #mpris {
+      #clock, #cpu, #memory, #pulseaudio, #network, #battery, #tray, #custom-menu, #custom-power, #mpris, #custom-weather, #custom-cpu-temp {
         padding: 0 8px;
         margin: 0 2px;
       }

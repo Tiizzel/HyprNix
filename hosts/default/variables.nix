@@ -10,6 +10,7 @@
   displayManager = "sddm";
 
   # Emable/disable bundled applications
+  aiCodeEditorsEnable = false;
   tmuxEnable = false;
   alacrittyEnable = false;
   weztermEnable = false;

@@ -44,5 +44,5 @@
         ".config/mimeapps.list.backup"
       ];
     })
-  ];
+  ] ++ (import ./waybar-scripts.nix {inherit pkgs;});
 }

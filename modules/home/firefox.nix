@@ -50,7 +50,7 @@
                 installation_mode = "force_installed";
                 private_browsing = true;
               };
-              # Bitwarden:
+              # nordvpn:
               "nordvpn.com" = {
                 install_url = "https://addons.mozilla.org/firefox/downloads/latest/nordvpn-proxy-extension/latest.xpi";
                 installation_mode = "force_installed";

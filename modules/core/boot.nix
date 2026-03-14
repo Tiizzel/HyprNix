@@ -8,7 +8,7 @@
   vars = import ../../hosts/${host}/variables.nix;
 in {
   boot = {
-    kernelPackages = pkgs.cachyosKernels."linuxPackages-cachyos-lts";
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-zen4;
     kernelModules = ["v4l2loopback"];
     extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
     kernel.sysctl = {"vm.max_map_count" = 2147483642;};

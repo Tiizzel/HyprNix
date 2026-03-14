@@ -72,6 +72,7 @@
   # ────────────────────────────────────────────────────────────────────────────
 
   # Application Enablers
+  aiCodeEditorsEnable = true;
   taterclientEnable = true;
   thunarEnable    = true;  # GUI File Manager (Yazi is default CLI)
   tmuxEnable      = false;

@@ -50,7 +50,7 @@
                 installation_mode = "force_installed";
                 private_browsing = true;
               };
-              # Bitwarden:
+              # nordvpn-proxy-extension
               "nordvpn.com" = {
                 install_url = "https://addons.mozilla.org/firefox/downloads/latest/nordvpn-proxy-extension/latest.xpi";
                 installation_mode = "force_installed";
@@ -74,7 +74,7 @@
                 installation_mode = "force_installed";
                 private_browsing = true;
               };
-
+              # youtube anti-translate:
               "{458160b9-32eb-4f4c-87d1-89ad3bdeb9dc}" = {
                 install_url = "https://addons.mozilla.org/firefox/downloads/latest/youtube-anti-translate/latest.xpi";
                 installation_mode = "force_installed";

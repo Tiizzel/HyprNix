@@ -13,6 +13,7 @@
     doomEmacsEnable
     antigravityEnable
     taterclientEnable
+    aiCodeEditorsEnable
     ;
   # Select bar module based on barChoice
   barModule =

@@ -5,7 +5,7 @@
   ...
 }: let
   vars = import ../../hosts/${host}/variables.nix;
-  inherit (vars) stylixImage grubTheme bootloader;
+  inherit (vars) stylixImage grubTheme bootloader polarity;
   lib = pkgs.lib;
   opacityVal = vars.opacity or 1.0;
 in {
@@ -15,7 +15,7 @@ in {
     image = stylixImage;
     targets.grub.enable = lib.mkForce (grubTheme == "stylix" && bootloader == "grub");
     base16Scheme = matugenScheme;
-    polarity = "dark";
+    polarity = polarity;
     opacity = {
       applications = opacityVal;
       terminal = opacityVal;

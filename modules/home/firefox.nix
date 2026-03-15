@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   programs.firefox = {
     enable = true;
@@ -7,7 +7,164 @@
       isDefault = true;
       settings = {
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "browser.tabs.drawInTitlebar" = true;
+        "browser.uidensity" = 0;
+        "layers.acceleration.force-enabled" = true;
+        "mozilla.widget.use-colors-from-system" = true;
+        "layout.css.prefers-color-scheme.content-override" = if config.stylix.polarity == "dark" then 0 else 1;
       };
+      search = {
+        default = "ddg";
+        force = true;
+        engines = {
+          "ddg" = {
+            urls = [{
+              template = "https://duckduckgo.com/?q={searchTerms}";
+            }];
+            icon = "https://duckduckgo.com/favicon.ico";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+            definedAliases = [ "@d" "@ddg" ];
+          };
+          "google".metaData.alias = "@g"; # builtin engines also support aliases
+          "MyNixOS" = {
+            urls = [{
+              template = "https://mynixos.com/search?q={searchTerms}";
+            }];
+            icon = "https://mynixos.com/favicon.ico";
+            updateInterval = 24 * 60 * 60 * 1000; # every day
+            definedAliases = [ "@mn" ];
+          };
+          "Nix Packages" = {
+            urls = [{
+              template = "https://search.nixos.org/packages";
+              params = [
+                { name = "type"; value = "packages"; }
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@np" ];
+          };
+        };
+      };
+      userChrome = ''
+        /* Stylix integration */
+        :root {
+          --s-base00: #${config.lib.stylix.colors.base00};
+          --s-base01: #${config.lib.stylix.colors.base01};
+          --s-base02: #${config.lib.stylix.colors.base02};
+          --s-base03: #${config.lib.stylix.colors.base03};
+          --s-base04: #${config.lib.stylix.colors.base04};
+          --s-base05: #${config.lib.stylix.colors.base05};
+          --s-base06: #${config.lib.stylix.colors.base06};
+          --s-base07: #${config.lib.stylix.colors.base07};
+          --s-base08: #${config.lib.stylix.colors.base08};
+          --s-base09: #${config.lib.stylix.colors.base09};
+          --s-base0A: #${config.lib.stylix.colors.base0A};
+          --s-base0B: #${config.lib.stylix.colors.base0B};
+          --s-base0C: #${config.lib.stylix.colors.base0C};
+          --s-base0D: #${config.lib.stylix.colors.base0D};
+          --s-base0E: #${config.lib.stylix.colors.base0E};
+          --s-base0F: #${config.lib.stylix.colors.base0F};
+          --rounding: 16px;
+        }
+
+        /* Minimalistic and Stylix-themed Firefox UI */
+        #main-window {
+          background-color: transparent !important;
+        }
+
+        #navigator-toolbox {
+          background-color: #${config.lib.stylix.colors.base00}E6 !important;
+          border: 3px solid #${config.lib.stylix.colors.base0D}4D !important;
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        #nav-bar, #TabsToolbar {
+          background-color: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+        }
+
+        #urlbar-background {
+          background-color: transparent !important;
+          border: none !important;
+        }
+
+        #urlbar[focused="true"] > #urlbar-background {
+          background-color: #${config.lib.stylix.colors.base0D}33 !important;
+        }
+
+        .tab-background {
+          border-radius: 10px !important;
+          margin: 2px !important;
+          background-color: #${config.lib.stylix.colors.base01}4D !important;
+        }
+
+        .tab-background[selected="true"] {
+          background-color: #${config.lib.stylix.colors.base0D}33 !important;
+        }
+
+        #PersonalToolbar {
+          background-color: transparent !important;
+        }
+
+        /* Search Bar */
+        #urlbar-input-container {
+          color: var(--s-base05) !important;
+        }
+
+        /* Context Menus and Popups */
+        menupopup, panel {
+          --panel-background: #${config.lib.stylix.colors.base00}E6 !important;
+          --panel-border-color: var(--s-base0D) !important;
+          --panel-color: var(--s-base05) !important;
+          border-radius: 10px !important;
+        }
+
+        /* Sidebar */
+        #sidebar-box {
+          --sidebar-background-color: #${config.lib.stylix.colors.base00}E6 !important;
+        }
+
+        /* Border between sidebar and web content */
+        .sidebar-splitter {
+          width: 1px !important;
+          background-color: var(--s-base02) !important;
+        }
+
+        /* Hide some clutter */
+        #TabsToolbar .titlebar-buttonbox-container {
+          display: none !important;
+        }
+
+        /* Customizing buttons to match theme */
+        .toolbarbutton-1 {
+          fill: var(--s-base05) !important;
+        }
+
+        .toolbarbutton-1:hover {
+          background-color: var(--s-base02) !important;
+          border-radius: 10px !important;
+        }
+      '';
+      userContent = ''
+        /* New Tab Page Styling */
+        @-moz-document url("about:newtab"), url("about:home") {
+          body {
+            background-color: #${config.lib.stylix.colors.base00} !important;
+            color: #${config.lib.stylix.colors.base05} !important;
+          }
+          .search-wrapper .logo-and-wordmark {
+            display: none !important;
+          }
+          .search-wrapper .search-inner-wrapper {
+            background-color: #${config.lib.stylix.colors.base01} !important;
+            border: 1px solid #${config.lib.stylix.colors.base02} !important;
+            border-radius: 10px !important;
+          }
+        }
+      '';
     };
     languagePacks = [ "en-GB" "de" ];
     /* ---- POLICIES ---- */

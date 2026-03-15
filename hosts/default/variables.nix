@@ -105,6 +105,9 @@
   opacity = 1.0;
   inactiveOpacity = 1.0;
 
+  # Polarity (Options: "dark", "light")
+  polarity = "dark";
+
   # Set Stylix Image
   # This will set your color palette
   # Default background

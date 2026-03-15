@@ -66,7 +66,7 @@
   # Terminal & Editor
   terminal = "kitty";  # Options: Kitty, ghostty, wezterm, alacritty
   editor   = "zeditor";
-  browser  = "zen-beta";
+  browser  = "firefox"; # Options: zen-beta, firefox
 
   # ────────────────────────────────────────────────────────────────────────────
   # 📦 FEATURE TOGGLES (ENABLE/DISABLE)
@@ -103,6 +103,9 @@
   # Transparency (0.0 to 1.0)
   opacity         = 1.0;
   inactiveOpacity = 0.69;
+
+  # Polarity (Options: "dark", "light")
+  polarity        = "dark";
 
   # Wallpaper & Color Palette
   stylixImage = ../../wallpapers/23493411.jpg;

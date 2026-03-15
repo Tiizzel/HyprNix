@@ -66,9 +66,9 @@
       tr = "tcli rebuild";
       tu = "tcli update";
       tc = "tcli cleanup";
-      fr = "nh os switch --hostname ${profile}";
-      fu = "nh os switch --hostname ${profile} --update";
-      ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
+      #fr = "nh os switch --hostname ${profile}";
+      #fu = "nh os switch --hostname ${profile} --update";
+      #ncg = "nix-collect-garbage --delete-old && sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
       cat = "bat";
       man = "batman";
     };

@@ -24,7 +24,7 @@
           path = "/home/${username}/.config/face.jpg";
           size = 150;
           border_size = 4;
-          border_color = "#${config.lib.stylix.colors.base02}";
+          border_color = "rgb(${config.lib.stylix.colors.base02})";
           rounding = -1; # Negative means circle
           position = "0, 200";
           halign = "center";
@@ -38,10 +38,10 @@
           monitor = "";
           dots_center = true;
           fade_on_empty = false;
-          font_color = "#${config.lib.stylix.colors.base0B}";
-          inner_color = "#${config.lib.stylix.colors.base05}";
-          outer_color = "#${config.lib.stylix.colors.base00}";
-          outline_thickness = 5;
+          font_color = "rgb(${config.lib.stylix.colors.base05})";
+          inner_color = "rgb(${config.lib.stylix.colors.base01})";
+          outer_color = "rgb(${config.lib.stylix.colors.base02})";
+          outline_thickness = 3;
           placeholder_text = "Eehhhmmmm???";
           shadow_passes = 2;
         }

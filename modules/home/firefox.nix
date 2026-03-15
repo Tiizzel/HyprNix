@@ -66,7 +66,7 @@
           --s-base0D: #${config.lib.stylix.colors.base0D};
           --s-base0E: #${config.lib.stylix.colors.base0E};
           --s-base0F: #${config.lib.stylix.colors.base0F};
-          --rounding: 16px;
+          --rounding: 8px;
         }
 
         /* Minimalistic and Stylix-themed Firefox UI */
@@ -77,6 +77,7 @@
         #navigator-toolbox {
           background-color: #${config.lib.stylix.colors.base00}E6 !important;
           border: 3px solid #${config.lib.stylix.colors.base0D}4D !important;
+          border-radius: var(--rounding) !important;
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4) !important;
         }
 
@@ -125,6 +126,39 @@
         /* Sidebar */
         #sidebar-box {
           --sidebar-background-color: #${config.lib.stylix.colors.base00}E6 !important;
+          background-color: #${config.lib.stylix.colors.base00}E6 !important;
+        }
+
+        /* New vertical tabs / sidebar panel */
+        #sidebar-main {
+          background-color: #${config.lib.stylix.colors.base00}E6 !important;
+          color: var(--s-base05) !important;
+        }
+
+        /* Sidebar header/toolbar */
+        #sidebar-header {
+          background-color: #${config.lib.stylix.colors.base01} !important;
+          color: var(--s-base05) !important;
+          border-bottom: 1px solid var(--s-base02) !important;
+        }
+
+        /* Sidebar inner browser/content area */
+        #sidebar {
+          background-color: #${config.lib.stylix.colors.base00}E6 !important;
+          color: var(--s-base05) !important;
+        }
+
+        /* Sidebar items hover */
+        #sidebar-main .tools-and-extensions toolbarbutton:hover,
+        .sidebar-panel toolbarbutton:hover {
+          background-color: var(--s-base02) !important;
+          border-radius: 8px !important;
+        }
+
+        /* Active sidebar button */
+        #sidebar-main .tools-and-extensions toolbarbutton[checked="true"] {
+          background-color: #${config.lib.stylix.colors.base0D}33 !important;
+          border-radius: 8px !important;
         }
 
         /* Border between sidebar and web content */
@@ -132,6 +166,18 @@
           width: 1px !important;
           background-color: var(--s-base02) !important;
         }
+
+        /* Vertical tabs strip */
+        #vertical-tabs {
+          background-color: #${config.lib.stylix.colors.base00}E6 !important;
+        }
+
+        #vertical-tabs .tabbrowser-tab .tab-background {
+          background-color: transparent !important;
+        }
+
+        #vertical-tabs .tabbrowser-tab[selected] .tab-background {
+          background-color: #${config.lib.stylix.colors.base0D}33 !important;
 
         /* Hide some clutter */
         #TabsToolbar .titlebar-buttonbox-container {

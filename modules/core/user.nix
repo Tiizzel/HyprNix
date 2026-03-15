@@ -19,7 +19,6 @@ in {
     users.${username} = {
       imports = [
         ./../home
-        inputs.zen-browser.homeModules.default
       ];
       home = {
         username = "${username}";

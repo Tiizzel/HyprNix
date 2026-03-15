@@ -66,7 +66,7 @@
   # Terminal & Editor
   terminal = "kitty";  # Options: Kitty, ghostty, wezterm, alacritty
   editor   = "zeditor";
-  browser  = "firefox"; # Options: zen-beta, firefox
+  browser  = "zen-beta"; # Options: zen-beta, firefox
 
   # ────────────────────────────────────────────────────────────────────────────
   # 📦 FEATURE TOGGLES (ENABLE/DISABLE)

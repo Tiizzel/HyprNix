@@ -26,6 +26,33 @@ HyprNix is a modular NixOS configuration flake designed for power users who want
 
 ---
 
+## 📸 Screenshots
+
+<div align="center">
+  <p><i>Visual overview of HyprNix in action.</i></p>
+  
+  <h3>Main Desktop</h3>
+  <img src="screenshots/main%20screenshot.png" width="85%"><br>
+  <img src="screenshots/desktop%20screenshot.png" width="85%">
+
+  <h3>Applications & UI</h3>
+  <table>
+    <tr>
+      <td><img src="screenshots/spotify%20and%20vesktop.png" alt="Spotify & Vesktop"></td>
+      <td><img src="screenshots/screenshot%20thunar.png" alt="Thunar File Manager"></td>
+    </tr>
+    <tr>
+      <td><img src="screenshots/screenshot%20roft.png" alt="Rofi Launcher"></td>
+      <td><img src="screenshots/screenshot%20waybar.png" alt="Waybar"></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><img src="screenshots/screenshot%20keybinding%20script.png" alt="Keybindings Script" width="70%"></td>
+    </tr>
+  </table>
+</div>
+
+---
+
 ## 📂 Project Structure
 
 ```bash

@@ -4,14 +4,12 @@
   pkgs,
   inputs,
   host,
-  matugenRawColors,
   ...
 }:
 let
   variables = import ../../../hosts/${host}/variables.nix;
   barChoice = variables.barChoice or "waybar";
   enableNoctalia = barChoice == "noctalia";
-  m3 = matugenRawColors.colors;
 in
 {
   imports = lib.optionals enableNoctalia [
@@ -21,37 +19,6 @@ in
   config = lib.mkIf enableNoctalia {
     programs.waybar.enable = lib.mkForce false;
     home.packages = [ inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default ];
-
-    # We use activation script to initialize colors.json if it doesn't exist
-    # This allows the user to change themes in settings while still getting 
-    # a synced theme on first install or if they delete the file.
-    home.activation.noctaliaColorsInit = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      COLORS_FILE="$HOME/.config/noctalia/colors.json"
-      if [ ! -f "$COLORS_FILE" ] || [ -L "$COLORS_FILE" ]; then
-        $DRY_RUN_CMD rm -f "$COLORS_FILE"
-        $DRY_RUN_CMD mkdir -p "$HOME/.config/noctalia"
-        cat > "$COLORS_FILE" <<EOF
-{
-  "mPrimary": "#${config.lib.stylix.colors.base0D}",
-  "mOnPrimary": "#${config.lib.stylix.colors.base00}",
-  "mSecondary": "#${config.lib.stylix.colors.base0E}",
-  "mOnSecondary": "#${config.lib.stylix.colors.base00}",
-  "mTertiary": "#${config.lib.stylix.colors.base0C}",
-  "mOnTertiary": "#${config.lib.stylix.colors.base00}",
-  "mError": "#${config.lib.stylix.colors.base08}",
-  "mOnError": "#${config.lib.stylix.colors.base00}",
-  "mSurface": "#${config.lib.stylix.colors.base00}",
-  "mOnSurface": "#${config.lib.stylix.colors.base05}",
-  "mSurfaceVariant": "#${config.lib.stylix.colors.base01}",
-  "mOnSurfaceVariant": "#${config.lib.stylix.colors.base04}",
-  "mOutline": "#${config.lib.stylix.colors.base03}",
-  "mShadow": "#${config.lib.stylix.colors.base00}",
-  "mHover": "#${config.lib.stylix.colors.base02}",
-  "mOnHover": "#${config.lib.stylix.colors.base05}"
-}
-EOF
-      fi
-    '';
 
     home.file.".config/noctalia/settings.json.template" = {
       text = builtins.toJSON {
@@ -95,21 +62,21 @@ EOF
         "bar" = {
           "autoHideDelay" = 500;
           "autoShowDelay" = 150;
-          "backgroundOpacity" = 0.8;
+          "backgroundOpacity" = 0.9;
           "barType" = "floating";
           "capsuleColorKey" = "primary";
-          "capsuleOpacity" = 0.4;
-          "contentPadding" = 4;
+          "capsuleOpacity" = 0.33;
+          "contentPadding" = 2;
           "density" = "default";
           "displayMode" = "always_visible";
           "enableExclusionZoneInset" = true;
           "floating" = true;
           "fontScale" = 1;
-          "frameRadius" = 10;
-          "frameThickness" = 4;
+          "frameRadius" = 12;
+          "frameThickness" = 8;
           "hideOnOverview" = false;
-          "marginHorizontal" = 15;
-          "marginVertical" = 8;
+          "marginHorizontal" = 10;
+          "marginVertical" = 6;
           "middleClickAction" = "none";
           "middleClickCommand" = "";
           "middleClickFollowMouse" = false;
@@ -127,7 +94,7 @@ EOF
           "showOnWorkspaceSwitch" = true;
           "showOutline" = false;
           "useSeparateOpacity" = false;
-          "widgetSpacing" = 10;
+          "widgetSpacing" = 6;
           "widgets" = {
             "center" = [
               {
@@ -160,11 +127,11 @@ EOF
                 "fontWeight" = "bold";
                 "groupedBorderOpacity" = 1;
                 "hideUnoccupied" = false;
-                "iconScale" = 1.0;
+                "iconScale" = 0.8;
                 "id" = "Workspace";
                 "labelMode" = "index";
                 "occupiedColor" = "secondary";
-                "pillSize" = 0.8;
+                "pillSize" = 0.6;
                 "showApplications" = false;
                 "showApplicationsHover" = false;
                 "showBadge" = true;
@@ -613,13 +580,13 @@ EOF
           "fontDefaultScale" = 1;
           "fontFixed" = "monospace";
           "fontFixedScale" = 1;
-          "panelBackgroundOpacity" = 0.8;
+          "panelBackgroundOpacity" = 0.93;
           "panelsAttachedToBar" = true;
           "scrollbarAlwaysVisible" = true;
           "settingsPanelMode" = "attached";
           "settingsPanelSideBarCardStyle" = false;
           "tooltipsEnabled" = true;
-          "translucentWidgets" = true;
+          "translucentWidgets" = false;
         };
         "wallpaper" = {
           "automationEnabled" = false;

@@ -145,7 +145,7 @@ in {
         disable_splash_rendering = true;
         enable_swallow = false;
         vfr = true; # Variable Frame Rate
-        vrr = 2; # Variable Refresh Rate  Might need to set to 0 for NVIDIA/AQ_DRM_DEVICES
+        #vrr = 2; # Variable Refresh Rate  Might need to set to 0 for NVIDIA/AQ_DRM_DEVICES
         # Screen flashing to black momentarily or going black when app is fullscreen
         # Try setting vrr to 0
 
@@ -162,7 +162,7 @@ in {
       };
 
       scrolling = {
-        column_width              = 0.46;
+        column_width              = 0.5;
         fullscreen_on_one_column  = false;
         focus_fit_method          = 1;
         follow_focus              = true;

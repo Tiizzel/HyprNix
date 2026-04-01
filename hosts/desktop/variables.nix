@@ -44,7 +44,7 @@
 
   # Hyprland Layout
   # Options: "dwindle" (standard), "scrolling" (master-stack), "master"
-  hyprlandLayout = "scrolling";
+  hyprlandLayout = "dwindle";
 
   # Monitor Settings
   extraMonitorSettings = "
@@ -57,7 +57,7 @@
 
   # Status Bar
   # Options: "noctalia" (default), "waybar"
-  barChoice = "waybar";
+  barChoice = "noctalia";
 
   # Waybar Settings (used when barChoice = "waybar")
   clock24h = true;
@@ -108,7 +108,7 @@
   polarity        = "dark";
 
   # Wallpaper & Color Palette
-  stylixImage = ../../wallpapers/23493411.jpg;
+  stylixImage = ../../wallpapers/aishot-3218.jpg;
 
   # Waybar Presets (Uncomment one)
   waybarChoice = ../../modules/home/waybar/waybar-hyprnix.nix;

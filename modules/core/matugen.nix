@@ -43,6 +43,7 @@
   };
 in {
   _module.args.matugenScheme = base16Scheme;
+  _module.args.matugenRawColors = matugenColors;
 
   environment.systemPackages = [pkgs.matugen];
 }

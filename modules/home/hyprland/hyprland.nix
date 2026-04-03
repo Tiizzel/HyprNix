@@ -182,11 +182,16 @@ in {
         inactive_opacity = inactiveOpacity;
         blur = {
           enabled = true;
-          size = 8;
-          passes = 3;
+          size = 12;
+          passes = 4;
           ignore_opacity = true;
           new_optimizations = true;
           xray = true;
+          noise = 0.02;
+          contrast = 0.9;
+          brightness = 0.8;
+          vibrancy = 0.2;
+          vibrancy_darkness = 0.0;
         };
         shadow = {
           enabled = true;
@@ -225,11 +230,19 @@ in {
 
     extraConfig = "
       ${extraMonitorSettings}
-      # To enable blur on waybar uncomment the line below
-      # Thanks to SchotjeChrisman
+
+      # ── Blur layer rules (glass effect) ──────────────────────────────────
+      # Noctalia Shell (bar, dock, control center, notifications, OSD)
+      layerrule = blur on, match:namespace noctalia-shell
+      layerrule = xray on, match:namespace noctalia-shell
+
+      # Quickshell overview (SUPER + TAB)
+      layerrule = blur on, match:namespace quickshell:overview
+
+      # Waybar (disabled but keep rule ready)
       # layerrule = blur on, match:namespace waybar
+
       layerrule = blur on, match:namespace wlogout
-      #layerrule = ignorezero on, match:namespace wlogout #gives error
     ";
   };
 }

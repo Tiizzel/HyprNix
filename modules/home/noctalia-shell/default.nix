@@ -40,14 +40,14 @@ in
   "mOnTertiary": "#${config.lib.stylix.colors.base00}",
   "mError": "#${config.lib.stylix.colors.base08}",
   "mOnError": "#${config.lib.stylix.colors.base00}",
-  "mSurface": "#${config.lib.stylix.colors.base00}",
-  "mOnSurface": "#${config.lib.stylix.colors.base05}",
-  "mSurfaceVariant": "#${config.lib.stylix.colors.base01}",
-  "mOnSurfaceVariant": "#${config.lib.stylix.colors.base04}",
-  "mOutline": "#${config.lib.stylix.colors.base03}",
+  "mSurface": "#${config.lib.stylix.colors.base01}",
+  "mOnSurface": "#${config.lib.stylix.colors.base06}",
+  "mSurfaceVariant": "#${config.lib.stylix.colors.base02}",
+  "mOnSurfaceVariant": "#${config.lib.stylix.colors.base05}",
+  "mOutline": "#${config.lib.stylix.colors.base04}",
   "mShadow": "#${config.lib.stylix.colors.base00}",
-  "mHover": "#${config.lib.stylix.colors.base02}",
-  "mOnHover": "#${config.lib.stylix.colors.base05}"
+  "mHover": "#${config.lib.stylix.colors.base03}",
+  "mOnHover": "#${config.lib.stylix.colors.base06}"
 }
 EOF
       fi
@@ -95,18 +95,18 @@ EOF
         "bar" = {
           "autoHideDelay" = 500;
           "autoShowDelay" = 150;
-          "backgroundOpacity" = 0.8;
+          "backgroundOpacity" = 0.12;
           "barType" = "floating";
           "capsuleColorKey" = "primary";
-          "capsuleOpacity" = 0.4;
+          "capsuleOpacity" = 0.15;
           "contentPadding" = 4;
           "density" = "default";
           "displayMode" = "always_visible";
           "enableExclusionZoneInset" = true;
           "floating" = true;
           "fontScale" = 1;
-          "frameRadius" = 10;
-          "frameThickness" = 4;
+          "frameRadius" = 16;
+          "frameThickness" = 1;
           "hideOnOverview" = false;
           "marginHorizontal" = 15;
           "marginVertical" = 8;
@@ -125,7 +125,7 @@ EOF
           "screenOverrides" = [];
           "showCapsule" = true;
           "showOnWorkspaceSwitch" = true;
-          "showOutline" = false;
+          "showOutline" = true;
           "useSeparateOpacity" = false;
           "widgetSpacing" = 10;
           "widgets" = {
@@ -332,7 +332,7 @@ EOF
         };
         "dock" = {
           "animationSpeed" = 1;
-          "backgroundOpacity" = 0.8;
+          "backgroundOpacity" = 0.12;
           "colorizeIcons" = true;
           "deadOpacity" = 0.6;
           "displayMode" = "auto_hide";
@@ -487,7 +487,7 @@ EOF
           "disableWallpaper" = true;
         };
         "notifications" = {
-          "backgroundOpacity" = 1;
+          "backgroundOpacity" = 0.15;
           "clearDismissed" = true;
           "criticalUrgencyDuration" = 15;
           "density" = "default";
@@ -519,7 +519,7 @@ EOF
         };
         "osd" = {
           "autoHideMs" = 2000;
-          "backgroundOpacity" = 1;
+          "backgroundOpacity" = 0.15;
           "enabled" = true;
           "enabledTypes" = [
             0
@@ -608,12 +608,12 @@ EOF
           "enableUserTheming" = false;
         };
         "ui" = {
-          "boxBorderEnabled" = false;
+          "boxBorderEnabled" = true;
           "fontDefault" = "Montserrat";
           "fontDefaultScale" = 1;
           "fontFixed" = "monospace";
           "fontFixedScale" = 1;
-          "panelBackgroundOpacity" = 0.8;
+          "panelBackgroundOpacity" = 0.15;
           "panelsAttachedToBar" = true;
           "scrollbarAlwaysVisible" = true;
           "settingsPanelMode" = "attached";

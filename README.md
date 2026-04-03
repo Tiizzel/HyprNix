@@ -19,7 +19,7 @@ HyprNix is a modular NixOS configuration flake designed for power users who want
 
 ### ✨ Highlights
 - **🎨 System-wide Theming:** Powered by [Stylix](https://github.com/nix-community/stylix). Change one wallpaper, and your entire system (Terminal, Browsers, WM, Editors) follows suit.
-- **🛠️ Custom CLI Tool:** `zcli` simplifies system maintenance, rebuilds, and configuration management.
+- **🛠️ Custom CLI Tool:** `tcli` simplifies system maintenance, rebuilds, and configuration management.
 - **🖥️ Desktop Flexibility:** Choose between the advanced **Noctalia Shell** or a highly customized **Waybar**.
 - **🌐 Browser Integration:** Pre-configured Firefox and Zen Browser with Stylix-driven aesthetics.
 - **⚡ Performance First:** Optimized for AMD, NVIDIA, and Intel GPUs with specialized profiles.
@@ -67,17 +67,16 @@ HyprNix is a modular NixOS configuration flake designed for power users who want
 
 ---
 
-## 🛠️ Management with `zcli`
+## 🛠️ Management with `tcli`
 
-The `zcli` utility is your primary way to interact with HyprNix.
+The `tcli` utility is your primary way to interact with HyprNix.
 
 | Command | Description |
 | :--- | :--- |
-| `zcli rebuild` | Rebuild and switch to the current configuration. |
-| `zcli update` | Update the flake lockfile and rebuild the system. |
-| `zcli cleanup` | Interactive tool to remove old generations and free space. |
-| `zcli add-host [name]` | Create a new host configuration from a template. |
-| `zcli diag` | Generate a system diagnostic report. |
+| `tcli rebuild` | Rebuild and switch to the current configuration. |
+| `tcli rebuild-boot` | Rebuild and stage for next boot. |
+| `tcli update` | Update the flake lockfile and rebuild the system. |
+| `tcli cleanup` | Remove old generations and free store space. |
 
 ---
 
@@ -119,29 +118,76 @@ HyprNix supports multiple layouts. Navigation keys adapt based on your `hyprland
 
 ## 🔧 Installation & Setup
 
-### 1. Bootstrap
-Ensure you have the necessary tools installed on your initial NixOS installation:
+> **Prerequisites:** A fresh NixOS installation with internet access.
+
+### Automatic Install (recommended)
+
+The install script handles everything — cloning, GPU detection, host setup, and the initial build.
+
+```bash
+nix-shell -p git pciutils
+```
+```bash
+bash <(curl -s https://raw.githubusercontent.com/Tiizzel/HyprNix/main/install.sh)
+```
+
+The script will prompt you for:
+- Hostname, NixOS username, git identity
+- Timezone and keyboard layout
+- GPU profile (auto-detected, can be overridden)
+
+It then patches the config, generates your hardware configuration, and runs the initial build. Reboot when done.
+
+---
+
+### Manual Install
+
+#### 1. Bootstrap
 ```bash
 nix-shell -p git pciutils
 ```
 
-### 2. Clone the Repository
+#### 2. Clone the Repository
 ```bash
-git clone https://github.com/tiizzel/HyprNix.git ~/HyprNix
+git clone https://github.com/Tiizzel/HyprNix.git ~/HyprNix
 cd ~/HyprNix
 ```
 
-### 3. Configure Your Host
-Create your host folder and edit `variables.nix`:
+#### 3. Create Your Host Directory
+Copy the default host and edit `variables.nix` to match your system:
 ```bash
-cp -r hosts/default hosts/my-machine
-# Edit hosts/my-machine/variables.nix to set your GPU, name, etc.
+cp -r hosts/desktop hosts/<your-hostname>
+$EDITOR hosts/<your-hostname>/variables.nix
 ```
 
-### 4. Build
+Key fields to set in `variables.nix`:
+| Field | Description |
+| :--- | :--- |
+| `gitUsername` / `gitEmail` | Your git identity |
+| `keyboardLayout` / `consoleKeyMap` | e.g. `"de"`, `"us"` |
+| `timezone` | e.g. `"Europe/Berlin"` |
+| `hostId` | 8-char hex, generate with `head -c4 /dev/urandom \| od -An -tx4 \| tr -d ' '` |
+
+#### 4. Generate Hardware Config
 ```bash
-# Set your profile and host in flake.nix or use zcli
-sudo nixos-rebuild switch --flake .#amd  # Replace 'amd' with your profile
+sudo nixos-generate-config --show-hardware-config > hosts/<your-hostname>/hardware.nix
+```
+
+#### 5. Update `flake.nix`
+Set the three variables at the top of the `outputs` let-block:
+```nix
+host     = "<your-hostname>";   # must match your hosts/ directory name
+profile  = "amd";               # your GPU profile (see below)
+username = "<your-username>";
+```
+
+Available GPU profiles: `amd` · `nvidia` · `nvidia-laptop` · `amd-nvidia-hybrid` · `intel` · `vm`
+
+#### 6. Build
+```bash
+git add .
+sudo nixos-rebuild boot --flake ~/HyprNix/#<profile>
+sudo reboot
 ```
 
 ---

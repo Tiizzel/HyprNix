@@ -7,6 +7,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,6 +70,7 @@
     alejandra,
     chaotic,
     nix-cachyos-kernel,
+    sops-nix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -88,6 +93,7 @@
           ./profiles/${gpuProfile}
           nix-flatpak.nixosModules.nix-flatpak
           chaotic.nixosModules.default
+          sops-nix.nixosModules.sops
           #{environment.systemPackages = [hytale-launcher.packages.x86_64-linux.default];}
         ];
       };

@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  config,
   username,
   host,
   profile,
@@ -42,6 +43,7 @@ in {
     ];
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
+    openssh.authorizedKeys.keyFiles = [config.sops.secrets.sshAuthorizedKey.path];
   };
   nix.settings.allowed-users = ["${username}"];
 }

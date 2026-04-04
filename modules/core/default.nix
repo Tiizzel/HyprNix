@@ -33,6 +33,7 @@ in {
     ./syncthing.nix
     ./system.nix
     ./thunar.nix
+    ./sops.nix
     ./user.nix
     ./virtualisation.nix
     ./xserver.nix

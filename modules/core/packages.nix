@@ -85,6 +85,7 @@ in {
       playerctl # Allows Changing Media Volume Through Scripts
       #rhythmbox # audio player
       ripgrep # Improved Grep
+      sops # Secrets management CLI
       socat # Needed For Screenshots
       unrar # Tool For Handling .rar Files
       unzip # Tool For Handling .zip Files

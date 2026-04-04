@@ -1,4 +1,8 @@
-{profile, ...}: {
+{
+  profile,
+  config,
+  ...
+}: {
   # Services to start
   services = {
     upower.enable = true; # noctalia shell battery
@@ -13,6 +17,7 @@
         PasswordAuthentication = true; #Users can SSH using kb and password
         KbdInteractiveAuthentication = true;
       };
+      authorizedKeysFiles = ["%h/.ssh/authorized_keys" config.sops.secrets.sshAuthorizedKey.path];
       ports = [22];
     };
     blueman.enable = true; # Bluetooth Support

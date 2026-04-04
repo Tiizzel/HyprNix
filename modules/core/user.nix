@@ -8,8 +8,6 @@
   ...
 }: let
   inherit (import ../../hosts/${host}/variables.nix) gitUsername;
-  # secrets = import ../../secrets;
-  secrets = { sshKeys = []; }; # Temporary dummy
 in {
   imports = [inputs.home-manager.nixosModules.home-manager];
   home-manager = {
@@ -44,7 +42,6 @@ in {
     ];
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
-    openssh.authorizedKeys.keys = secrets.sshKeys;
   };
   nix.settings.allowed-users = ["${username}"];
 }

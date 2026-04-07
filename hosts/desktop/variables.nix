@@ -79,9 +79,9 @@
   tmuxEnable      = false;
   alacrittyEnable = false;
   weztermEnable   = false;
-  ghosttyEnable   = false;
+  ghosttyEnable   = true;
   vscodeEnable    = false;
-  antigravityEnable = false; # Google fork of VSCodium
+  antigravityEnable = true; # Google fork of VSCodium
   helixEnable     = false; # Evil-helix with VIM binds
   doomEmacsEnable = false; # Requires: tcli doom install
 
@@ -108,7 +108,7 @@
   polarity        = "dark";
 
   # Wallpaper & Color Palette
-  stylixImage = ../../wallpapers/aishot-3218.jpg;
+  stylixImage = ../../wallpapers/aishot-3256.jpg;
 
   # Waybar Presets (Uncomment one)
   waybarChoice = ../../modules/home/waybar/waybar-hyprnix.nix;
